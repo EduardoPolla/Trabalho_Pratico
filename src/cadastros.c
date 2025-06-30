@@ -1,6 +1,7 @@
 #include <stdlib.h>
-#include "../include/cadastro.h"
-#include <utils.h>
+#include "../include/cadastros.h"
+#include "../include/utils.h"
+#include <string.h>
 
 // Jogador
 bool lista_vazia_jogador(lista_jogador_t *lista_jogador)
@@ -16,7 +17,7 @@ void inicializa_lista_jogador(lista_jogador_t *lista_jogador)
 
 no_jogador_t *novo_registro_jogador()
 {
-    no_jogador_t novo = (no_jogador_t*)malloc(sizeof(no_jogador_t));
+    no_jogador_t *novo = (no_jogador_t*)malloc(sizeof(no_jogador_t));
 
     if(!novo) return NULL;
 
@@ -37,11 +38,11 @@ no_jogador_t *novo_registro_jogador()
     scanf("%i", &novo->dados.idade);
 
     // Altura
-    printf(" Altura do jogador.............: ");
+    printf("Altura do jogador.............: ");
     scanf("%f", &novo->dados.altura);
 
     // Peso
-    printf(" o peso do jogador.............: ");
+    printf("Peso do jogador.............: ");
     scanf("%f", &novo->dados.peso);
 
     // Valor Passe
@@ -72,12 +73,12 @@ no_jogador_t *novo_registro_jogador()
 void insere_novo_registro_jogador(no_jogador_t *novo_jogador, lista_jogador_t *lista_jogador)
 {
     if(lista_vazia_jogador) {
-        lista_jogador->cabeca_jogador = novo_jogador;
+        lista_jogador->cabeca = novo_jogador;
         return;
     }
 
-    novo_jogador->proximo_jogador = lista_jogador->cabeca_jogador;
-    lista_jogador->cabeca_jogador = novo_jogador;
+    novo_jogador->proximo = lista_jogador->cabeca;
+    lista_jogador->cabeca = novo_jogador;
 }   
 
 // Partida
@@ -90,13 +91,13 @@ bool lista_vazia_partida(lista_partida_t *lista_partida)
 
 void inicializa_lista_partida(lista_partida_t *lista_partida)
 {
-    lista_partida->cabeca_partida = NULL;
+    lista_partida->cabeca = NULL;
 }
 
 no_partida_t *novo_registro_partida()
 {
-    string aux;
-    no_partida_t nova = (no_jogador_t*)malloc(sizeof(no_partida_t));
+    int aux;
+    no_partida_t *nova = (no_partida_t*)malloc(sizeof(no_partida_t));
 
     if(!nova) return NULL;
 
@@ -114,14 +115,12 @@ no_partida_t *novo_registro_partida()
 
     // Data
     printf("Data da partida: ");
-    scanf("%i/%i/%i", &nova->dados.dia, &nova->dados.mes, &nova->dados.ano);
+    scanf("%i/%i/%i", &nova->dados.data_partida.dia, &nova->dados.data_partida.mes, &nova->dados.data_partida.ano);
     getchar();
 
     // Resultado
-    printf("Resultado da partida (DERROTA, EMPATE, VITORIA): ");
-    fgets(aux, TAMANHO, stdin);
-    retirar_enter(aux);
-    formatar_maiusculas(aux);
+    printf("Resultado da partida (DERROTA(1), EMPATE(2), VITORIA(3)): ");
+    scanf("%i", &aux);
 
     switch(aux) {
         case 1: nova->dados.resultado_partida = DERROTA;
@@ -141,7 +140,7 @@ no_partida_t *novo_registro_partida()
     printf("N° de substituições na partida: ");
     scanf("%i", &nova->dados.qtd_substituicoes);
 
-    nova->proxima_partida = NULL;
+    nova->proxima = NULL;
 
     return nova;
 }
@@ -149,10 +148,10 @@ no_partida_t *novo_registro_partida()
 void insere_novo_registro_partida(no_partida_t *nova_partida, lista_partida_t *lista_partida)
 {
     if(lista_vazia_partida) {
-        lista_partida->cabeca_partida = nova_partida;
+        lista_partida->cabeca = nova_partida;
         return;
     }
 
-    nova_partida->proxima_partida = lista_partida->cabeca_partida;
-    lista_partida->cabeca_partida = nova_partida;
+    nova_partida->proxima = lista_partida->cabeca;
+    lista_partida->cabeca = nova_partida;
 }

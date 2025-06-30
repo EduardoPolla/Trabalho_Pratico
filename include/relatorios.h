@@ -1,7 +1,7 @@
 #ifndef RELATORIOS_H
 #define RELATORIOS_H
 
-#include "./include/types.h"
+#include "types.h"
 
 // Jogadores
 void relatorio_jogadores(no_jogador_t *ptr_lista_jogador);

@@ -44,20 +44,20 @@ typedef struct dados_jogador {
 
 // Membro da Lista para Jogadores
 typedef struct no_jogador {
-    dados_jogador_t dados_jogador;
-    struct no_jogador *proximo_jogador;
+    dados_jogador_t dados;
+    struct no_jogador *proximo;
 } no_jogador_t;
 
 // Tipo Lista para Jogadores
 typedef struct lista_jogador {
-    no_jogador_t *cabeca_jogador;
+    no_jogador_t *cabeca;
     //int nr_nos_jogador;
 } lista_jogador_t;
 
 // PARTIDAS
 
 // Tipo Dados Partida
-typedef dados_partida {
+typedef struct dados_partida {
     string nome_adversario;
     data_t data_partida;
     string local_partida;
@@ -67,13 +67,13 @@ typedef dados_partida {
 
 // Membro da Lista para Partidas
 typedef struct no_partida {
-    dados_partida_t dados_partida;
-    struct no_partida *proxima_partida;
+    dados_partida_t dados;
+    struct no_partida *proxima;
 } no_partida_t;
 
 // Tipo Lista para partidas 
 typedef struct lista_partida {
-    no_partida_t *cabeca_partida;
+    no_partida_t *cabeca;
     //int nr_nos_partida;
 } lista_partida_t;
 

@@ -1,7 +1,12 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "./include/types.h"
+#include "types.h"
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdio.h>
+
 
 void limpar_tela();
 void retirar_enter(string string);

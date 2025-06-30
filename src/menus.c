@@ -17,6 +17,7 @@ int menu_principal()
     printf("0. Fechar programa\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);
+    getchar();
 
     return opcao;
 }
@@ -34,6 +35,7 @@ int menu_cadastros()
     printf("0. Voltar ao MENU PRINCIPAL\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);
+    getchar();
 
     return opcao;
 }
@@ -55,6 +57,7 @@ int menu_relatorios()
     printf("0. Voltar ao MENU PRINCIPAL\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);
+    getchar();
 
     return opcao;
 }
@@ -75,6 +78,7 @@ int opcao;
     printf("0. Voltar ao MENU PRINCIPAL\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);
+    getchar();
 
     return opcao;
 }

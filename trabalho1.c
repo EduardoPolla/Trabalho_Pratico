@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include "./include/menus.h"
+#include "./include/cadastros.h"
+#include "./include/utils.h"
+#include "./include/relatorios.h"
 
 #define ENCERRAR 0
 
@@ -495,3 +498,4 @@ void redefinir_dados_partida(void)
         }
     }
 }
+*/
