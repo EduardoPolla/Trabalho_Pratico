@@ -3,7 +3,14 @@
 // Jogadores
 void relatorio_jogadores(no_jogador_t *ptr_lista_jogador)
 {
-    
+    //Caso ainda não haja cadastro
+    if(!ptr_lista_jogador) {
+        return;
+    }
+
+    while(ptr_lista_jogador) {
+        mostrar_dados_jogadores(i);
+    }
 }
 
 void relatorio_jogadores_vendidos(no_jogador_t *ptr_lista_jogador)
