@@ -31,7 +31,7 @@ int menu_cadastros()
     printf("-----------------\n");
     printf("1. Cadastrar jogador\n");
     printf("2. Cadastrar partida\n");
-    printf("0. Fechar programa\n\n");
+    printf("0. Voltar ao MENU PRINCIPAL\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);
 
@@ -52,7 +52,7 @@ int menu_relatorios()
     printf("4. Relatório de partidas contra time adversário\n");
     printf("5. Valor do time\n");
     printf("6. Indíce de aproveitamento do time\n");
-    printf("0. Voltar ao MENU PRINCIPAL\n\n");
+    printf("0. Voltar ao MENU PRINCIPAL\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);
 
@@ -72,7 +72,7 @@ int opcao;
     printf("3. Localizar jogador(es) por faixa etária\n");
     printf("4. Localizar jogador(es) por faixa salarial\n");
     printf("5. Localizar jogador com maior salário\n");
-    printf("0. Fechar programa\n");
+    printf("0. Voltar ao MENU PRINCIPAL\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);
 

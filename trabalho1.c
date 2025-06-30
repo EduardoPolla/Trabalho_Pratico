@@ -4,14 +4,9 @@
 
 #define ENCERRAR 0
 
-//Cadastro de Jogadores =(2)=
-dados_jogador_t *cadastro(void);
-
+/*
 //Mostrar jogadores =(3)=
 void mostrar_jogadores(void);
-
-//Cadastro de Lista de Partidas =(4)=
-void lista(void);
 
 //Mostrar Partidas =(5)=
 void mostrar_partidas(void);
@@ -48,32 +43,22 @@ void redefenir_dados_jogador(void);
 
 //Redefinir Dados Partida =(16)=
 void redefinir_dados_partida(void);
-
-//Utéis 
-
-//Função para Resumir o Código (JOGADORES)
-void mostrar_dados_jogadores(int i);
-
-//Função para Resumir o Código (PARTIDAS)
-void mostrar_dados_partidas(int i);
-
-//Função para Resumir o Código (RETIRAR ENTER)
-void retirar_enter(string str);
-
-//Função para Formatar Maiúsculas
-void formatar_maiusculas(string str);
-
+*/
 
 int main()
 {
-    //Ponteiro jogadores
-    dados_jogador_t *lista_jogadores = NULL;
-
-    //Ponteiro partidas
-    dados_partida_t *lista_partidas = NULL;
-
     //Menu
     int opcao, sub_opcao;
+
+    // Jogadores 
+    lista_jogador_t lista_jogador;
+    no_jogador_t *aux_jogador;
+    inicializa_lista_jogador(&lista_jogador);
+
+    // Partida
+    lista_partida_t lista_partida;
+    no_partida_t *aux_partida;
+    inicializa_lista_partida(&lista_partida);
 
     do {
         opcao = menu_principal();
@@ -85,8 +70,14 @@ int main()
 
                         switch(sub_opcao) {
 
-                            case 0: limpar_tela();
-                            break;
+                            case 1: aux_jogador = novo_registro_jogador();
+                                    insere_novo_registro_jogador(aux_jogador, &lista_jogador);
+                                    break;
+
+
+                            case 2: aux_partida = novo_registro_partida();
+                                    insere_novo_registro_partida(aux_partida, &lista_partida);
+                                    break;
 
                             default: printf("Opção inválida! Tente novamente!\n");
                         }
@@ -130,51 +121,7 @@ int main()
     return 0;
 }
 
-//Cadastro de Jogadores =(2)=
-dados_jogador_t *cadastro(void)
-{
-    
-}
-
-//IMPORTANTE: VISITAR A FUNÇÃO mostrar_dados_jogadores ANTES DE ANALISAR mostrar_jogadores!!!
-//Mostrar jogadores =(3)=
-void mostrar_jogadores(void)
-{
-    //Caso ainda não haja cadastro
-    if(base_dados.qtd_jog == 0) {
-        printf("Não há jogadores cadastrados na base de dados!!!\n");
-    }
-
-    if(base_dados.qtd_jog != 0) {
-        for(int i = 0; i < base_dados.qtd_jog; i++) {
-            mostrar_dados_jogadores(i);
-        }
-    }
-}
-
-//Cadastro de Lista de Partidas =(4)=
-void lista(void)
-{
-    printf("Digite o nome do time adversário da partida: ");
-    fgets(lista_partidas.partidas[local_vetor].nome_adversario, TAMANHO, stdin);
-    lista_partidas.partidas[local_vetor].nome_adversario[strlen(lista_partidas.partidas[local_vetor].nome_adversario) - 1] = '\0';
-    printf("Digite a data em que o partida ocorreu: ");
-    fgets(lista_partidas.partidas[local_vetor].data_partida, TAMANHO, stdin);
-    lista_partidas.partidas[local_vetor].data_partida[strlen(lista_partidas.partidas[local_vetor].data_partida) - 1] = '\0';
-    printf("Digite o local onde a partida ocorreu: ");
-    fgets(lista_partidas.partidas[local_vetor].local_partida, TAMANHO, stdin);
-    lista_partidas.partidas[local_vetor].local_partida[strlen(lista_partidas.partidas[local_vetor].local_partida) - 1] = '\0';
-    printf("Digite o resultado da partida: ");
-    fgets(lista_partidas.partidas[local_vetor].resultado_partida, TAMANHO, stdin);
-    lista_partidas.partidas[local_vetor].resultado_partida[strlen(lista_partidas.partidas[local_vetor].resultado_partida) - 1] = '\0';
-    printf("Digite a escalação da partida: ");
-    fgets(lista_partidas.partidas[local_vetor].time_escalado, TAMANHO, stdin);
-    lista_partidas.partidas[local_vetor].time_escalado[strlen(lista_partidas.partidas[local_vetor].time_escalado) - 1] = '\0';
-    printf("Digite o número de substituições na partida: ");
-    scanf("%i", &lista_partidas.partidas[local_vetor].qtd_substituicoes);
-    getchar();
-}
-
+/*
 //IMPORTANTE: VISITAR A FUNÇÃO mostrar_dados_partidas ANTES DE ANALISAR partidas!!!
 //Mostrar Partidas =(5)=
 void mostrar_partidas(void)
@@ -546,52 +493,5 @@ void redefinir_dados_partida(void)
                 }
             }
         }
-    }
-}
-
-//Função para Resumir o Código (JOGADORES)
-void mostrar_dados_jogadores(int i)
-{
-    printf("\n====================================================");
-    printf("\nDados do jogador [%i]", i + 1);
-    printf("\n====================================================\n");
-    printf("Nome do jogador: %s\n", base_dados.jogadores[i].nome_jogador);
-    printf("Posição(ões) do jogador: %s\n", base_dados.jogadores[i].posicao);
-    printf("Idade do jogador: %i anos\n", base_dados.jogadores[i].idade);
-    printf("Altura do jogador: %.2fm\n", base_dados.jogadores[i].altura);
-    printf("Peso do jogador: %.2fKg\n", base_dados.jogadores[i].peso);
-    printf("Valor de passe do jogador: %.3fR$\n", base_dados.jogadores[i].valor_passe);
-    printf("Valor de aquisição do jogador: %.3fR$\n", base_dados.jogadores[i].valor_aquisicao);
-    printf("Salário do jogador: %.3fR$\n", base_dados.jogadores[i].salario);
-    printf("Jogador está ativo: %c\n", base_dados.jogadores[i].atividade);
-    if(base_dados.jogadores[i].atividade == 'n' || base_dados.jogadores[i].atividade == 'N') {
-        printf("Motivo da inatividade: %s\n", base_dados.jogadores[i].razao_inatividade);
-    }
-}
-
-//Função para Resumir o Código (PARTIDAS)
-void mostrar_dados_partidas(int i)
-{
-    printf("\n====================================================");
-    printf("\nDados da partida [%i]", i + 1);
-    printf("\n====================================================\n");    
-    printf("Nome do time adversário: %s\n", lista_partidas.partidas[i].nome_adversario);
-    printf("Data da partida: %s\n", lista_partidas.partidas[i].data_partida);
-    printf("Resultado da partida: %s\n", lista_partidas.partidas[i].resultado_partida);
-    printf("Time escalado: %s\n", lista_partidas.partidas[i].time_escalado);
-    printf("Quantidade de substituições: %i\n", lista_partidas.partidas[i].qtd_substituicoes);
-}
-
-//Função para Resumir o Código (RETIRAR ENTER)
-void retirar_enter(string str)
-{
-    str[strlen(str) - 1] = '\0';
-}
-
-//Função para Formatar Maiúsculas
-void formatar_maiusculas(string str)
-{
-    for(size_t i = 0; i < strlen(str); i++) {
-        *(str+i) = toupper(*(str+i));
     }
 }
