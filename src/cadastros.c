@@ -10,10 +10,6 @@ bool lista_vazia_jogador(no_jogador_t *lista_jogador)
     
     return true; // Está vazia 
 }
-void inicializa_lista_jogador(no_jogador_t *lista_jogador)
-{
-    lista_jogador = NULL;
-}
 
 no_jogador_t *novo_registro_jogador()
 {
@@ -82,10 +78,15 @@ no_jogador_t *novo_registro_jogador()
     return novo;
 }
 
-void insere_novo_registro_jogador(no_jogador_t *novo_jogador, no_jogador_t *lista_jogador)
+void insere_novo_registro_jogador(no_jogador_t *novo_jogador, no_jogador_t **lista_jogador)
 {
-    novo_jogador->proximo = lista_jogador;
-    lista_jogador = novo_jogador;
+    if(lista_vazia_jogador(*lista_jogador)) {
+        *lista_jogador = novo_jogador;
+        return;
+    }
+
+    novo_jogador->proximo = *lista_jogador;
+    *lista_jogador = novo_jogador;
 }   
 
 // Partida
@@ -96,15 +97,12 @@ bool lista_vazia_partida(no_partida_t *lista_partida)
     return false; // Não está vazia
 }
 
-void inicializa_lista_partida(no_partida_t *lista_partida)
+no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
 {
-    lista_partida = NULL;
-}
+    if(!lista_jogador) printf("Não há jogadores para escalação no banco de dados!\n"); return NULL;
 
-no_partida_t *novo_registro_partida()
-{
-    int aux;
     no_partida_t *nova = (no_partida_t*)malloc(sizeof(no_partida_t));
+    int numero_jogador, i;
 
     if(!nova) return NULL;
 
@@ -132,6 +130,12 @@ no_partida_t *novo_registro_partida()
     formatar_maiusculas(nova->dados.resultado_partida);
 
     // Escalação
+    printf("Jogadores disponíveis para escalação na partida: ");
+
+    for(aux = lista_jogador; aux != NULL; aux = aux->proximo) {
+        if()
+            printf("Jogador[%i]: %s\n", lista_jogador->dados.nome_jogador);
+    }
 
     // Quantidade Substituições
     printf("N° de substituições na partida.: ");
@@ -143,13 +147,20 @@ no_partida_t *novo_registro_partida()
     return nova;
 }
 
-void insere_novo_registro_partida(no_partida_t *nova_partida, no_partida_t *lista_partida)
+void insere_novo_registro_partida(no_partida_t *nova_partida, no_partida_t **lista_partida)
 {
-    if(lista_vazia_partida(lista_partida)) {
-        lista_partida = nova_partida;
+    if(lista_vazia_partida(*lista_partida)) {
+        *lista_partida = nova_partida;
         return;
     }
 
-    nova_partida->proxima = lista_partida;
-    lista_partida = nova_partida;
+    nova_partida->proxima = *lista_partida;
+    *lista_partida = nova_partida;
+}
+
+bool jogador_data_partida_iguais(no_jogador_t lista_jogador, no_partida_t lista_partida)
+{
+    int i = 0;
+
+    if(lista_jogador->dados.dia  )
 }

@@ -22,3 +22,7 @@ void msg_press_enter()
     printf("\nPressione ENTER para limpar a tela: ");
     getchar();
 }
+
+void msg_usuario(string msg) {
+    printf("%s\n", msg);
+}

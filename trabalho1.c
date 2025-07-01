@@ -28,13 +28,13 @@ int main()
 
                         switch(sub_opcao) {
 
-                            case 1: insere_novo_registro_jogador(novo_registro_jogador(), lista_jogador);
+                            case 1: insere_novo_registro_jogador(novo_registro_jogador(), &lista_jogador);
                                     break;
 
                             case 2: 
                                     break;
 
-                            default: printf("Opção inválida! Tente novamente!\n");
+                            default: msg_usuario("Opção inválida! Tente novamente!");
                         }
                     } while(sub_opcao != ENCERRAR);
                     break;
@@ -51,7 +51,7 @@ int main()
                             case 0: limpar_tela();
                             break;
 
-                            default: printf("Opção inválida! Tente novamente!\n");
+                            default: msg_usuario("Opção inválida! Tente novamente!");
                         }
                     } while(sub_opcao != ENCERRAR);
                     break;
@@ -64,7 +64,7 @@ int main()
                             case 0: limpar_tela();
                             break;
 
-                            default: printf("Opção inválida! Tente novamente!\n");
+                            default: msg_usuario("Opção inválida! Tente novamente!");
                         }
                     } while(sub_opcao != ENCERRAR);
                     break;
@@ -72,7 +72,7 @@ int main()
             case 0: limpar_tela();
                     break;
 
-            default: printf("Opção inválida! Tente novamente!\n");
+            default: msg_usuario("Opção inválida! Tente novamente!");
         }
 
     } while(opcao != ENCERRAR);

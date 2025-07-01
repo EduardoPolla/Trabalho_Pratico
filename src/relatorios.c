@@ -8,7 +8,7 @@ void mostrar_dados_jogador(no_jogador_t *lista_jogador)
 {
     printf("\n=======================================================================\n");
     printf("Nome do jogador................: %s\n", lista_jogador->dados.nome_jogador);
-    printf("Posições do jogador............:  %s\n", lista_jogador->dados.posicao);
+    printf("Posições do jogador............: %s\n", lista_jogador->dados.posicao);
     printf("Idade do jogador...............: %i\n", lista_jogador->dados.idade);
     printf("Altura do jogador..............: %f\n", lista_jogador->dados.altura);
     printf("Peso do jogador................: %f\n", lista_jogador->dados.peso);
@@ -20,9 +20,10 @@ void mostrar_dados_jogador(no_jogador_t *lista_jogador)
         printf("Data de venda do jogador.......: %i/%i/%i\n", lista_jogador->dados.venda.dia, lista_jogador->dados.venda.mes, lista_jogador->dados.venda.ano);
     }
     printf("Status do jogador..............: %s\n", lista_jogador->dados.atividade);
-    if(lista_jogador->dados.atividade != "ATIVO") {
+    if(strcmp(lista_jogador->dados.atividade, "ATIVO") != 0) {
         printf("Razão da inatividade...........: %s", lista_jogador->dados.razao_inatividade);
     }
+    printf("\n=======================================================================\n");
 }
 
 void relatorio_jogadores(no_jogador_t *lista_jogador)

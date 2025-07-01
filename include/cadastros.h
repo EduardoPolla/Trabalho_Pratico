@@ -5,15 +5,16 @@
 #include "types.h"
 
 // Jogador
-bool lista_vazia_jogador(no_jogador_t *lista_jogador);
-void inicializa_lista_jogador(no_jogador_t *lista_jogador);
 no_jogador_t *novo_registro_jogador();
-void insere_novo_registro_jogador(no_jogador_t *novo_jogador, no_jogador_t *lista_jogador);
+void insere_novo_registro_jogador(no_jogador_t *novo_jogador, no_jogador_t **lista_jogador);
 
 // Partida
+no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador);
+void insere_novo_registro_partida(no_partida_t *novo_partida, no_partida_t **lista_partida);
+
+// Verificadores
+bool lista_vazia_jogador(no_jogador_t *lista_jogador);
 bool lista_vazia_partida(no_partida_t *lista_partida);
-void inicializa_lista_partida(no_partida_t *lista_partida);
-no_partida_t *novo_registro_partida();
-void insere_novo_registro_partida(no_partida_t *novo_partida, no_partida_t *lista_partida);
+bool jogador_data_partida_iguais(no_jogador_t lista_jogador, no_partida_t lista_partida);
 
 #endif

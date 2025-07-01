@@ -12,9 +12,6 @@ typedef struct data {
     int ano;
 } data_t;
 
-// Tipo Jogadores da Partida
-
-
 // JOGADORES 
 
 // Tipo Dados Jogador
@@ -47,6 +44,7 @@ typedef struct dados_partida {
     data_t data_partida;
     string local_partida;
     string resultado_partida;
+    no_jogador_t *escalacao[11];
     int qtd_substituicoes;
 } dados_partida_t;
 
