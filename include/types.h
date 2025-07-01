@@ -6,15 +6,6 @@
 // Tipo String
 typedef char string[TAMANHO];
 
-// Tipo Status do Jogador
-typedef enum {INATIVO = 1, ATIVO = 2} status_t;
-
-// Tipo Razão Inatividade do Jogador
-typedef enum {REC_MED = 1, VENDIDO = 2} inatividade_t;
-
-// Tipo Resultado Partida
-typedef enum {DERROTA = 1, EMPATE = 2, VITORIA = 3} resultado_t;
-
 typedef struct data {
     int dia;
     int mes;
@@ -38,8 +29,8 @@ typedef struct dados_jogador {
     float salario;
     data_t admissao;
     data_t venda;
-    status_t atividade;
-    inatividade_t razao_inatividade;
+    string atividade;
+    string razao_inatividade;
 } dados_jogador_t;
 
 // Membro da Lista para Jogadores
@@ -48,12 +39,6 @@ typedef struct no_jogador {
     struct no_jogador *proximo;
 } no_jogador_t;
 
-// Tipo Lista para Jogadores
-typedef struct lista_jogador {
-    no_jogador_t *cabeca;
-    //int nr_nos_jogador;
-} lista_jogador_t;
-
 // PARTIDAS
 
 // Tipo Dados Partida
@@ -61,7 +46,7 @@ typedef struct dados_partida {
     string nome_adversario;
     data_t data_partida;
     string local_partida;
-    resultado_t resultado_partida;
+    string resultado_partida;
     int qtd_substituicoes;
 } dados_partida_t;
 
@@ -70,11 +55,5 @@ typedef struct no_partida {
     dados_partida_t dados;
     struct no_partida *proxima;
 } no_partida_t;
-
-// Tipo Lista para partidas 
-typedef struct lista_partida {
-    no_partida_t *cabeca;
-    //int nr_nos_partida;
-} lista_partida_t;
 
 #endif

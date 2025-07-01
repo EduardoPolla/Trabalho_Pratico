@@ -54,14 +54,10 @@ int main()
     int opcao, sub_opcao;
 
     // Jogadores 
-    lista_jogador_t lista_jogador;
-    no_jogador_t *aux_jogador;
-    inicializa_lista_jogador(&lista_jogador);
+    no_jogador_t *lista_jogador = NULL;
 
     // Partida
-    lista_partida_t lista_partida;
-    no_partida_t *aux_partida;
-    inicializa_lista_partida(&lista_partida);
+    no_partida_t *lista_partida = NULL;
 
     do {
         opcao = menu_principal();
@@ -73,13 +69,10 @@ int main()
 
                         switch(sub_opcao) {
 
-                            case 1: aux_jogador = novo_registro_jogador();
-                                    insere_novo_registro_jogador(aux_jogador, &lista_jogador);
+                            case 1: insere_novo_registro_jogador(novo_registro_jogador(), lista_jogador);
                                     break;
 
-
-                            case 2: aux_partida = novo_registro_partida();
-                                    insere_novo_registro_partida(aux_partida, &lista_partida);
+                            case 2: 
                                     break;
 
                             default: printf("Opção inválida! Tente novamente!\n");
@@ -91,6 +84,10 @@ int main()
                         sub_opcao = menu_relatorios();
 
                         switch(sub_opcao) {
+
+                            case 1: relatorio_jogadores(lista_jogador);
+                                    msg_press_enter();
+                                    break;
 
                             case 0: limpar_tela();
                             break;
