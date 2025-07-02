@@ -32,6 +32,7 @@ void relatorio_jogadores(no_jogador_t *lista_jogador)
         printf("Nenhum jogador cadastrado!\n");
         return;
     }
+        
 
     while(lista_jogador) {
         mostrar_dados_jogador(lista_jogador);
@@ -39,9 +40,19 @@ void relatorio_jogadores(no_jogador_t *lista_jogador)
     }
 }
 
-void relatorio_jogadores_vendidos(no_jogador_t *ptr_lista_jogador)
+void relatorio_jogadores_vendidos(no_jogador_t *lista_jogador)
 {
+    if(lista_vazia_jogador(lista_jogador)) {
+        printf("Nenhum jogador cadastrado!\n"); 
+        return;
+    }
 
+    while(lista_jogador) {
+        if(strcmp(lista_jogador->dados.razao_inatividade, "VENDIDO") == 0) {
+            mostrar_dados_jogador(lista_jogador);
+        }
+        lista_jogador = lista_jogador->proximo;
+    }
 }
 
 
@@ -52,24 +63,24 @@ void mostrar_dados_partida(no_partida_t *lista_partida)
 
 }
 
-void relatorio_partidas(no_partida_t *ptr_lista_partida)
+void relatorio_partidas(no_partida_t *lista_partida)
 {
 
 }
 
-void relatorio_partidas_adversatio(no_partida_t *ptr_lista_partida)
+void relatorio_partidas_adversatio(no_partida_t *lista_partida)
 {
 
 }
 
 
 // Time 
-void valor_time(no_jogador_t *ptr_lista_jogador)
+void valor_time(no_jogador_t *lista_jogador)
 {
 
 }
 
-void indice_aproveitamento(no_partida_t *ptr_lista_partida)
+void indice_aproveitamento(no_partida_t *lista_partida)
 {
 
 }

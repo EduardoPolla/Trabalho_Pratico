@@ -3,6 +3,19 @@
 #include "../include/utils.h"
 #include <string.h>
 
+// Comparador de Datas para Escalação Partida
+int comparar_datas(data_t d_jogador, data_t d_partida)
+{
+    if(d_jogador.ano > d_partida.ano) return -1;
+    if(d_jogador.ano < d_partida.ano) return 1;
+    if(d_jogador.mes > d_partida.mes) return -1;
+    if(d_jogador.mes < d_partida.mes) return 1;
+    if(d_jogador.dia > d_partida.dia) return -1;
+    if(d_jogador.dia < d_partida.dia) return 1;
+
+    return 0;
+}
+
 // Jogador
 bool lista_vazia_jogador(no_jogador_t *lista_jogador)
 {
@@ -102,6 +115,7 @@ no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
     if(!lista_jogador) printf("Não há jogadores para escalação no banco de dados!\n"); return NULL;
 
     no_partida_t *nova = (no_partida_t*)malloc(sizeof(no_partida_t));
+    no_jogador_t *aux;
     int numero_jogador, i;
 
     if(!nova) return NULL;
@@ -133,8 +147,7 @@ no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
     printf("Jogadores disponíveis para escalação na partida: ");
 
     for(aux = lista_jogador; aux != NULL; aux = aux->proximo) {
-        if()
-            printf("Jogador[%i]: %s\n", lista_jogador->dados.nome_jogador);
+            printf("Jogador[%i]: %s\n", i, lista_jogador->dados.nome_jogador);
     }
 
     // Quantidade Substituições
@@ -158,9 +171,3 @@ void insere_novo_registro_partida(no_partida_t *nova_partida, no_partida_t **lis
     *lista_partida = nova_partida;
 }
 
-bool jogador_data_partida_iguais(no_jogador_t lista_jogador, no_partida_t lista_partida)
-{
-    int i = 0;
-
-    if(lista_jogador->dados.dia  )
-}

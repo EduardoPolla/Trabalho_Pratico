@@ -15,6 +15,6 @@ void insere_novo_registro_partida(no_partida_t *novo_partida, no_partida_t **lis
 // Verificadores
 bool lista_vazia_jogador(no_jogador_t *lista_jogador);
 bool lista_vazia_partida(no_partida_t *lista_partida);
-bool jogador_data_partida_iguais(no_jogador_t lista_jogador, no_partida_t lista_partida);
+int comparar_datas(data_t d1, data_t d2);
 
 #endif

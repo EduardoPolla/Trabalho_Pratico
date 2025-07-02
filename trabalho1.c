@@ -48,6 +48,9 @@ int main()
                                     msg_press_enter();
                                     break;
 
+                            case 2: relatorio_jogadores_vendidos(lista_jogador);
+                                    break;
+
                             case 0: limpar_tela();
                             break;
 
