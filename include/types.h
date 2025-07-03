@@ -44,7 +44,7 @@ typedef struct dados_partida {
     data_t data_partida;
     string local_partida;
     string resultado_partida;
-    no_jogador_t *escalacao[11];
+    string escalacao[11];
     int qtd_substituicoes;
 } dados_partida_t;
 

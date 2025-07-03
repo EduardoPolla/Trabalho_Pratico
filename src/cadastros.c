@@ -6,7 +6,7 @@
 // Comparador de Datas para Escalação Partida
 int comparar_datas(data_t d_jogador, data_t d_partida)
 {
-    if(d_jogador.ano > d_partida.ano) return -1;
+    if(d_jogador.ano > d_partida.ano) return -1; 
     if(d_jogador.ano < d_partida.ano) return 1;
     if(d_jogador.mes > d_partida.mes) return -1;
     if(d_jogador.mes < d_partida.mes) return 1;
@@ -14,6 +14,30 @@ int comparar_datas(data_t d_jogador, data_t d_partida)
     if(d_jogador.dia < d_partida.dia) return 1;
 
     return 0;
+}
+
+bool jogador_ativo_data(data_t data_partida, no_jogador_t *lista_jogador)
+{
+    //Verifica se o jogador foi contratado antes da data da partida
+    if(comparar_datas(data_partida, lista_jogador->dados.admissao) < 0) {
+        return false;
+    }
+
+    // Verifica se tem data de venda
+    bool tem_data_venda(no_jogador_t *lista_jogador) {
+        if(lista_jogador->dados.venda.dia == 0 && lista_jogador->dados.venda.mes == 0 && lista_jogador->dados.venda.ano == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    // Se tiver data de venda, verifica se partida foi antes da venda
+    if(tem_data_venda && comparar_datas(lista_jogador->dados.venda, data_partida) > 0) {
+        return false; // Partida ocorreu depois da venda
+    }
+
+    return true; // Jogador está elegível a participar da escalação
 }
 
 // Jogador
@@ -112,11 +136,14 @@ bool lista_vazia_partida(no_partida_t *lista_partida)
 
 no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
 {
-    if(!lista_jogador) printf("Não há jogadores para escalação no banco de dados!\n"); return NULL;
+    if(!lista_jogador) {
+        printf("Não há jogadores para escalação no banco de dados!\n");
+        return NULL;
+    }
 
     no_partida_t *nova = (no_partida_t*)malloc(sizeof(no_partida_t));
-    no_jogador_t *aux;
-    int numero_jogador, i;
+    no_jogador_t *aux, *jogadores_elegiveis[TAMANHO];
+    int qtd_elegiveis = 0, numero_jogador, i = 0;
 
     if(!nova) return NULL;
 
@@ -132,22 +159,42 @@ no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
     retirar_enter(nova->dados.local_partida);
     formatar_maiusculas(nova->dados.local_partida);
 
-    // Data
-    printf("Data da partida................: ");
-    scanf("%i/%i/%i", &nova->dados.data_partida.dia, &nova->dados.data_partida.mes, &nova->dados.data_partida.ano);
-    getchar();
-
     // Resultado
     printf("Resultado da partida (DERROTA, EMPATE ou VITORIA): ");
     fgets(nova->dados.resultado_partida, TAMANHO, stdin);
     retirar_enter(nova->dados.resultado_partida);
     formatar_maiusculas(nova->dados.resultado_partida);
 
-    // Escalação
-    printf("Jogadores disponíveis para escalação na partida: ");
+    // Data
+    printf("Data da partida................: ");
+    scanf("%i/%i/%i", &nova->dados.data_partida.dia, &nova->dados.data_partida.mes, &nova->dados.data_partida.ano);
+    getchar();
 
+    // Escalação
     for(aux = lista_jogador; aux != NULL; aux = aux->proximo) {
-            printf("Jogador[%i]: %s\n", i, lista_jogador->dados.nome_jogador);
+        jogador_ativo_data(nova->dados.data_partida, lista_jogador);
+        jogadores_elegiveis[++i] = aux;
+    }
+
+    if(qtd_elegiveis < 11) {
+        printf("Quantidade de jogadores insuficientes para a data %i/%i/%i\n", nova->dados.data_partida.dia, nova->dados.data_partida.mes, nova->dados.data_partida.ano);
+        free(nova);
+        return NULL;
+    }
+    
+    else {
+        printf("Jogadores disponíveis para a data %i/%i/%i: ", nova->dados.data_partida.dia, nova->dados.data_partida.mes, nova->dados.data_partida.ano);
+        for(int i = 0; i < qtd_elegiveis; i++) {
+            printf("%i - %s\n", i + 1, jogadores_elegiveis[i]->dados.nome_jogador);
+        }
+
+        for(int i = 0; i < qtd_elegiveis; i++) {
+            printf("Digite o número do jogador desejado para a posição %i: ", i + 1);
+            scanf("%i", &numero_jogador);
+            getchar();
+
+            strcpy(nova->dados.escalacao[i], jogadores_elegiveis[numero_jogador - 1]->dados.nome_jogador);
+        }
     }
 
     // Quantidade Substituições
@@ -170,4 +217,3 @@ void insere_novo_registro_partida(no_partida_t *nova_partida, no_partida_t **lis
     nova_partida->proxima = *lista_partida;
     *lista_partida = nova_partida;
 }
-
