@@ -89,19 +89,71 @@ void relatorio_partidas(no_partida_t *lista_partida)
     }
 }
 
-void relatorio_partidas_adversatio(no_partida_t *lista_partida)
+void relatorio_partidas_adversario(no_partida_t *lista_partida, string nome)
 {
+    if(lista_vazia_partida(lista_partida)) {
+        printf("Não há partidas cadastradas!\n");
+        return;
+    }
 
+    while(lista_partida) {
+        if(strcmp(lista_partida->dados.nome_adversario, nome) == 0) {
+            mostrar_dados_partida(lista_partida);
+        }
+        lista_partida = lista_partida->proxima;
+    }
 }
 
-
 // Time 
+
 void valor_time(no_jogador_t *lista_jogador)
 {
+    float soma = 0;
 
+    if(lista_vazia_jogador(lista_jogador)) {
+        printf("Nenhum jogador cadastrado!\n");
+        return;
+    }
+
+    while(lista_jogador) {
+        if(strcmp(lista_jogador->dados.razao_inatividade, "VENDIDO") != 0) {
+            soma += lista_jogador->dados.valor_passe;
+        }
+        lista_jogador = lista_jogador->proximo;
+    }
+
+    printf("Valor do time é %.2f!\n", soma);
 }
 
 void indice_aproveitamento(no_partida_t *lista_partida)
 {
+    int vitoria = 0, empate = 0, derrota = 0;
+    int nmr_partidas = 0;
 
+    if(lista_vazia_partida) {
+        printf("Nenhuma partida cadastrada!\n");
+        return;
+    }
+
+    while(lista_partida) {
+        if(strcmp(lista_partida->dados.resultado_partida, "VITORIA") == 0) {
+            vitoria++;
+        }
+        if(strcmp(lista_partida->dados.resultado_partida, "EMPATE") == 0) {
+            empate++;
+            nmr_partidas--;
+        }
+        if(strcmp(lista_partida->dados.resultado_partida, "DERROTA") == 0) {
+            derrota++;
+        }
+        
+        
+        nmr_partidas++;
+        lista_partida = lista_partida->proxima;
+    }
+
+    printf("N° de VITÓRIAS: %i\n", vitoria);
+    printf("N° de EMPATES: %i\n", empate);
+    printf("N° de DERROTAS: %i\n", derrota);
+    printf("Índice de aproveitamento do time é %.2f!\n", (float)vitoria / nmr_partidas);
 }

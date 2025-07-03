@@ -10,7 +10,7 @@ void relatorio_jogadores_vendidos(no_jogador_t *lista_jogador);
 
 // Partidas
 void relatorio_partidas(no_partida_t *lista_partida);
-void relatorio_partidas_adversatio(no_partida_t *lista_partida);
+void relatorio_partidas_adversario(no_partida_t *lista_partida, string nome);
 
 // Time 
 void mostrar_dados_partida(no_partida_t *lista_partida);

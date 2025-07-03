@@ -19,6 +19,9 @@ int main()
     // Partida
     no_partida_t *lista_partida = NULL;
 
+    // Auxiliares
+    string nome_adv;
+
     // Carrega Jogadores de Arquivo .bin
     carregar_jogadores_bin(&lista_jogador, "jogadores.bin");
 
@@ -64,6 +67,23 @@ int main()
 
                             case 3: relatorio_partidas(lista_partida);
                                     msg_press_enter();
+                                    break;
+
+                            case 4: printf("Digite o nome do time adversário: ");
+                                    fgets(nome_adv, TAMANHO, stdin);
+                                    retirar_enter(nome_adv);
+                                    formatar_maiusculas(nome_adv);
+                                    relatorio_partidas_adversario(lista_partida, nome_adv);
+                                    msg_press_enter();
+                                    break;
+
+                            case 5: valor_time(lista_jogador);
+                                    msg_press_enter();
+                                    break;
+
+                            case 6: indice_aproveitamento(lista_partida);
+                                    msg_press_enter();
+                                    break;
 
                             case 0: limpar_tela();
                             break;
