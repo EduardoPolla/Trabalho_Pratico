@@ -60,15 +60,52 @@ void localizar_jogadores_posicao(no_jogador_t *lista_jogador, string posicao)
 
 void localizar_jogador_idade(no_jogador_t *lista_jogador, int de, int ate)
 {
+    if(lista_vazia_jogador(lista_jogador)) {
+        printf("Nenhum jogador cadastrado!\n");
+        return;
+    }
 
+    while(lista_jogador) {
+        if(lista_jogador->dados.idade >= de && lista_jogador->dados.idade <= ate) {
+            mostrar_dados_jogador(lista_jogador);
+        }
+        lista_jogador = lista_jogador->proximo;
+    }
 }
 
 void localizar_jogador_salario(no_jogador_t *lista_jogador, float de, float ate)
 {
+    if(lista_vazia_jogador(lista_jogador)) {
+        printf("Nenhum jogador cadastrado!\n");
+        return;
+    }
 
+    while(lista_jogador) {
+        if(lista_jogador->dados.idade >= de && lista_jogador->dados.idade <= ate) {
+            mostrar_dados_jogador(lista_jogador);
+        }
+        lista_jogador = lista_jogador->proximo;
+    }
 }
 
 void localizar_jogador_maior_salario(no_jogador_t *lista_jogador)
 {
+    float maior = 0;
+    no_jogador_t *aux;
 
+    if(lista_vazia_jogador(lista_jogador)) {
+        printf("Nenhum jogador cadastrado!\n");
+        return;
+    }
+
+    while(lista_jogador) {
+        if(lista_jogador->dados.salario > maior) {
+            maior = lista_jogador->dados.salario;
+            aux = lista_jogador;
+        }
+
+        lista_jogador = lista_jogador->proximo;
+    }
+
+    mostrar_dados_jogador(aux);
 }

@@ -25,6 +25,10 @@ int main()
     string nome_jogador;
     string posicao;
 
+    int de_idade, ate_idade;
+
+    float de_sal, ate_sal;
+
     // Carrega Jogadores de Arquivo .bin
     carregar_jogadores_bin(&lista_jogador, "jogadores.bin");
 
@@ -114,6 +118,30 @@ int main()
                                     retirar_enter(posicao);
                                     formatar_maiusculas(posicao);
                                     localizar_jogadores_posicao(lista_jogador, posicao);
+                                    msg_press_enter();
+                                    break;
+
+                            case 3: printf("Digite a idade mínima: ");
+                                    scanf("%i", &de_idade);
+                                    getchar();
+                                    printf("Digite a idade máxima: ");
+                                    scanf("%i", &ate_idade);
+                                    getchar();
+                                    localizar_jogador_idade(lista_jogador, de_idade, ate_idade);
+                                    msg_press_enter();
+                                    break;
+
+                            case 4: printf("Digite o salário mínimo: ");
+                                    scanf("%f", &de_sal);
+                                    getchar();
+                                    printf("Digite o salário máximo: ");
+                                    scanf("%f", &ate_sal);
+                                    getchar();
+                                    localizar_jogador_salario(lista_jogador, de_sal, ate_sal);
+                                    msg_press_enter();
+                                    break;
+
+                            case 5: localizar_jogador_maior_salario(lista_jogador);
                                     msg_press_enter();
                                     break;
 
