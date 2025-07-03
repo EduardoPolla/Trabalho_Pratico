@@ -5,6 +5,7 @@
 #include "./include/utils.h"
 #include "./include/relatorios.h"
 #include "./include/arquivos.h"
+#include "./include/consultas.h"
 
 #define ENCERRAR 0
 
@@ -21,6 +22,8 @@ int main()
 
     // Auxiliares
     string nome_adv;
+    string nome_jogador;
+    string posicao;
 
     // Carrega Jogadores de Arquivo .bin
     carregar_jogadores_bin(&lista_jogador, "jogadores.bin");
@@ -97,6 +100,22 @@ int main()
                         sub_opcao = menu_consultas();
 
                         switch(sub_opcao) {
+
+                            case 1: printf("Nome para efetuar a busca: ");
+                                    fgets(nome_jogador, TAMANHO, stdin);
+                                    retirar_enter(nome_jogador);
+                                    formatar_maiusculas(nome_jogador);
+                                    localizar_jogadores_nome(lista_jogador, nome_jogador);
+                                    msg_press_enter();
+                                    break;
+
+                            case 2: printf("Posição para efetuar a busca: ");
+                                    fgets(posicao, TAMANHO, stdin);
+                                    retirar_enter(posicao);
+                                    formatar_maiusculas(posicao);
+                                    localizar_jogadores_posicao(lista_jogador, posicao);
+                                    msg_press_enter();
+                                    break;
 
                             case 0: limpar_tela();
                             break;

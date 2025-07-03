@@ -2,7 +2,6 @@
 2 - Arrumar escalação
 3 - arquivo .csv
 4 - Fazer arquivo para redefinir dados(partida e jogador)
-5 - Terminar relatórios
 
 Apresentação:
 

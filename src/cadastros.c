@@ -175,7 +175,8 @@ no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
     // Escalação
     for(aux = lista_jogador; aux != NULL; aux = aux->proximo) {
         if(jogador_ativo_data(nova->dados.data_partida, aux)) {
-            jogadores_elegiveis[++i] = aux;
+            jogadores_elegiveis[qtd_elegiveis] = aux;
+            qtd_elegiveis++;
         }
     }
 
