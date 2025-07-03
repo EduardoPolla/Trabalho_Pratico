@@ -1,0 +1,9 @@
+1 - Terminar consultas
+2 - Arrumar escalação
+3 - arquivo .csv
+4 - Fazer arquivo para redefinir dados(partida e jogador)
+
+Apresentação:
+
+1 - Estudar funções de salvar e carregar arquivos binários
+2 - Estudar escalação em partidas

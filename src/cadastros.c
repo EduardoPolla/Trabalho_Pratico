@@ -41,6 +41,7 @@ bool jogador_ativo_data(data_t data_partida, no_jogador_t *lista_jogador)
 }
 
 // Jogador
+
 bool lista_vazia_jogador(no_jogador_t *lista_jogador)
 {
     if(lista_jogador) return false; // Não está vazia
@@ -127,6 +128,7 @@ void insere_novo_registro_jogador(no_jogador_t *novo_jogador, no_jogador_t **lis
 }   
 
 // Partida
+
 bool lista_vazia_partida(no_partida_t *lista_partida)
 {
     if(!lista_partida) return true; // Está vazia

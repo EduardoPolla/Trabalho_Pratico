@@ -20,7 +20,10 @@ int main()
     no_partida_t *lista_partida = NULL;
 
     // Carrega Jogadores de Arquivo .bin
-    carregar_jogadores_bin(lista_jogador, "jogadores.bin");
+    carregar_jogadores_bin(&lista_jogador, "jogadores.bin");
+
+    // Carrega Partidas de Arquivo .bin
+    carregar_partidas_bin(&lista_partida, "partidas.bin");
 
     do {
         opcao = menu_principal();
@@ -94,6 +97,11 @@ int main()
     // Salva Jogadores em Arquivo .bin
     if(!lista_vazia_jogador(lista_jogador)) {
         salvar_jogadores_bin(lista_jogador, "jogadores.bin");
+    }
+
+    // Salva Partidas em Arquivo .bin
+    if(!lista_vazia_partida(lista_partida)) {
+        salvar_partidas_bin(lista_partida, "partidas.bin");
     }
 
     return 0;
