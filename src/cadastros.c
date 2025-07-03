@@ -6,34 +6,34 @@
 // Comparador de Datas para Escalação Partida
 int comparar_datas(data_t d_jogador, data_t d_partida)
 {
-    if(d_jogador.ano > d_partida.ano) return -1; 
-    if(d_jogador.ano < d_partida.ano) return 1;
-    if(d_jogador.mes > d_partida.mes) return -1;
-    if(d_jogador.mes < d_partida.mes) return 1;
-    if(d_jogador.dia > d_partida.dia) return -1;
-    if(d_jogador.dia < d_partida.dia) return 1;
+    if(d_jogador.ano > d_partida.ano) return 1; 
+    if(d_jogador.ano < d_partida.ano) return -1;
+    if(d_jogador.mes > d_partida.mes) return 1;
+    if(d_jogador.mes < d_partida.mes) return -1;
+    if(d_jogador.dia > d_partida.dia) return 1;
+    if(d_jogador.dia < d_partida.dia) return -1;
 
     return 0;
+}
+
+// Verifica se tem data de venda
+bool tem_data_venda(no_jogador_t *lista_jogador) {
+    if(lista_jogador->dados.venda.dia == 0 && lista_jogador->dados.venda.mes == 0 && lista_jogador->dados.venda.ano == 0) {
+        return false;
+    }
+
+    return true;
 }
 
 bool jogador_ativo_data(data_t data_partida, no_jogador_t *lista_jogador)
 {
     //Verifica se o jogador foi contratado antes da data da partida
-    if(comparar_datas(data_partida, lista_jogador->dados.admissao) < 0) {
+    if(comparar_datas(data_partida, lista_jogador->dados.admissao) > 0) {
         return false;
     }
 
-    // Verifica se tem data de venda
-    bool tem_data_venda(no_jogador_t *lista_jogador) {
-        if(lista_jogador->dados.venda.dia == 0 && lista_jogador->dados.venda.mes == 0 && lista_jogador->dados.venda.ano == 0) {
-            return false;
-        }
-
-        return true;
-    }
-
     // Se tiver data de venda, verifica se partida foi antes da venda
-    if(tem_data_venda && comparar_datas(lista_jogador->dados.venda, data_partida) > 0) {
+    if(tem_data_venda(lista_jogador) && comparar_datas(lista_jogador->dados.venda, data_partida) < 0) {
         return false; // Partida ocorreu depois da venda
     }
 
@@ -174,12 +174,14 @@ no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
 
     // Escalação
     for(aux = lista_jogador; aux != NULL; aux = aux->proximo) {
-        jogador_ativo_data(nova->dados.data_partida, lista_jogador);
-        jogadores_elegiveis[++i] = aux;
+        if(jogador_ativo_data(nova->dados.data_partida, aux)) {
+            jogadores_elegiveis[++i] = aux;
+        }
     }
 
     if(qtd_elegiveis < 11) {
         printf("Quantidade de jogadores insuficientes para a data %i/%i/%i\n", nova->dados.data_partida.dia, nova->dados.data_partida.mes, nova->dados.data_partida.ano);
+        msg_press_enter();
         free(nova);
         return NULL;
     }
