@@ -112,15 +112,13 @@ int main()
 									break;
 
 							case 2: do {
-										sub_opcao = menu_relatorios();
+										sub_opcao = menu_csv();
 
 										switch(sub_opcao) {
 											case 1: exportar_dados_jogador_csv(lista_jogador, "jogadores.csv");
-													msg_press_enter();
 													break;
 
-											case 2: 
-													msg_press_enter();
+											case 2: exportar_dados_vendidos_csv(lista_jogador, "jogadores_vendidos.csv");
 													break;
 
 											case 3: exportar_dados_partida_csv(lista_partida, "partidas.csv");
@@ -131,15 +129,10 @@ int main()
 													fgets(nome_adv, TAMANHO, stdin);
 													retirar_enter(nome_adv);
 													formatar_maiusculas(nome_adv);
-													relatorio_partidas_adversario(lista_partida, nome_adv);
-													msg_press_enter();
+													exportar_adversario_csv(lista_partida, nome_adv, "partidas_adversario.csv");
 													break;
 
-											case 5: valor_time(lista_jogador);
-													msg_press_enter();
-													break;
-
-											case 6: indice_aproveitamento(lista_partida);
+											case 5: exportar_info_time(lista_partida, lista_jogador, "info_time.csv");
 													msg_press_enter();
 													break;
 

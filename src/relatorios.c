@@ -146,7 +146,6 @@ void indice_aproveitamento(no_partida_t *lista_partida)
             derrota++;
         }
         
-        
         nmr_partidas++;
         lista_partida = lista_partida->proxima;
     }

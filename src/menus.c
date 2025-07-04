@@ -82,6 +82,27 @@ int menu_relatorios()
     return opcao;
 }
 
+int menu_csv()
+{
+    int opcao;
+
+    limpar_tela();
+
+    printf("| MENU RELATÓRIOS .csv|\n");
+    printf("-----------------------\n");
+    printf("1. Relatório de jogadores\n");
+    printf("2. Relatório de jogadores vendidos\n");
+    printf("3. Relatório de partidas\n");
+    printf("4. Relatório de partidas contra time adversário\n");
+    printf("5. Valor do time e indíce de aproveitamento\n");
+    printf("0. Voltar ao MENU TIPO DE SAÍDA\n");
+    printf("Digite a opção desejada: ");
+    scanf("%i", &opcao);
+    getchar();
+
+    return opcao;
+}
+
 int menu_consultas()
 {
     int opcao;

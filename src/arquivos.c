@@ -155,7 +155,7 @@ void exportar_dados_jogador_csv(no_jogador_t *lista_jogador, string nome_arq)
 
 void exportar_dados_partida_csv(no_partida_t *lista_partida, string nome_arq)
 {
-FILE *fp = fopen(nome_arq, "w");
+    FILE *fp = fopen(nome_arq, "w");
 
     if(lista_vazia_partida(lista_partida)) {
         printf("Nenhuma partida cadastrada!\n");
@@ -179,7 +179,7 @@ FILE *fp = fopen(nome_arq, "w");
     fclose(fp); 
 }
 
-void exportar_dados_vendidos_csv(no_jogador_t *lista_jogador, FILE *fp)
+void exportar_dados_vendidos_csv(no_jogador_t *lista_jogador, string nome_arq)
 {
     FILE *fp = fopen(nome_arq, "w");
 
@@ -194,26 +194,95 @@ void exportar_dados_vendidos_csv(no_jogador_t *lista_jogador, FILE *fp)
         msg_press_enter();
         return;
     }
-    
+
     fprintf(fp, "NOME;POSIÇÃO;IDADE;ALTURA;PESO;VALOR VENDA;VALOR COMPRA;SALÁRIO;DATA ADMISSAO;DATA VENDA;ATIVIDADE;RAZÃO INATIVIDADE\n");
 
     while(lista_jogador) {
-        mostrar_dados_jogador_csv(lista_jogador, fp);
+        if(strcmp(lista_jogador->dados.razao_inatividade, "VENDIDO") == 0) {
+            mostrar_dados_jogador_csv(lista_jogador, fp);
+        }
         lista_jogador = lista_jogador->proximo;
     }    
 
     fclose(fp);
-
 }
 
-void exportar_adversario_csv(no_partida_t *lista_partida, FILE *fp)
+void exportar_adversario_csv(no_partida_t *lista_partida, string nome_adv, string nome_arq)
 {
+    FILE *fp = fopen(nome_arq, "w");
 
+    if(lista_vazia_partida(lista_partida)) {
+        printf("Nenhum partida cadastrada!\n");
+        msg_press_enter();
+        return;
+    }
 
+    if (!fp) {
+        printf("Erro ao abrir o arquivo %s!\n", nome_arq);
+        msg_press_enter();
+        return;
+    }
+
+    fprintf(fp, "NOME ADVERSÁRIO;LOCAL;DATA;RESULTADO;ESCALAÇÃO;N° SUBSTITUIÇÕES\n");
+
+    while(lista_partida) {
+        if(strcmp(lista_partida->dados.nome_adversario, nome_adv) == 0) {
+            mostrar_dados_partida_csv(lista_partida, fp);
+        }
+        lista_partida = lista_partida->proxima;
+    }    
+
+    fclose(fp);
 }
 
-void exportar_info_time(no_partida_t *lista_partida, no_jogador_t *lista_jogador, FILE *fp)
+void exportar_info_time(no_partida_t *lista_partida, no_jogador_t *lista_jogador, string nome_arq)
 {
+    int vitoria = 0, empate = 0, derrota = 0;
+    int nmr_partidas = 0;
+    float soma = 0;
+    FILE *fp = fopen(nome_arq, "w");
 
+    if(lista_vazia_partida(lista_partida) && lista_vazia_jogador(lista_jogador)) {
+        printf("Não foi possível gerar o arquivo!\n");
+        msg_press_enter();
+        return;
+    }
 
+    if (!fp) {
+        printf("Erro ao abrir o arquivo %s!\n", nome_arq);
+        msg_press_enter();
+        return;
+    }
+
+    while(lista_partida) {
+        if(strcmp(lista_partida->dados.resultado_partida, "VITORIA") == 0) {
+            vitoria++;
+        }
+        if(strcmp(lista_partida->dados.resultado_partida, "EMPATE") == 0) {
+            empate++;
+            nmr_partidas--;
+        }
+        if(strcmp(lista_partida->dados.resultado_partida, "DERROTA") == 0) {
+            derrota++;
+        }
+        
+        nmr_partidas++;
+        lista_partida = lista_partida->proxima;
+    }
+
+    while(lista_jogador) {
+        if(strcmp(lista_jogador->dados.razao_inatividade, "VENDIDO") != 0) {
+            soma += lista_jogador->dados.valor_passe;
+        }
+        lista_jogador = lista_jogador->proximo;
+    }
+
+    fprintf(fp, "N° VITÓRIAS;N° EMPATES;N° DERROTAS;ÍNDICE DE APROVEITAMENTO;VALOR TIME\n");
+    fprintf(fp, "%i;", vitoria);
+    fprintf(fp, "%i;", empate);
+    fprintf(fp, "%i;", derrota);
+    fprintf(fp, "%.2f;", ((float)vitoria / nmr_partidas) * 100);
+    fprintf(fp, "%.2f", soma);
+
+    fclose(fp);
 }
