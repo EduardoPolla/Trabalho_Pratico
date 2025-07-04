@@ -74,7 +74,7 @@ int menu_relatorios()
     printf("4. Relatório de partidas contra time adversário\n");
     printf("5. Valor do time\n");
     printf("6. Indíce de aproveitamento do time\n");
-    printf("0. Voltar ao MENU TIPO DE SAÍDa\n");
+    printf("0. Voltar ao MENU TIPO DE SAÍDA\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);
     getchar();

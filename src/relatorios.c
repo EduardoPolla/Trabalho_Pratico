@@ -129,7 +129,7 @@ void indice_aproveitamento(no_partida_t *lista_partida)
     int vitoria = 0, empate = 0, derrota = 0;
     int nmr_partidas = 0;
 
-    if(lista_vazia_partida) {
+    if(lista_vazia_partida(lista_partida)) {
         printf("Nenhuma partida cadastrada!\n");
         return;
     }
@@ -154,5 +154,5 @@ void indice_aproveitamento(no_partida_t *lista_partida)
     printf("N° de VITÓRIAS: %i\n", vitoria);
     printf("N° de EMPATES: %i\n", empate);
     printf("N° de DERROTAS: %i\n", derrota);
-    printf("Índice de aproveitamento do time é %.2f!\n", (float)vitoria / nmr_partidas);
+    printf("Índice de aproveitamento do time é %.2f por cento!\n", ((float)vitoria / nmr_partidas) * 100);
 }

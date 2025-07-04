@@ -178,3 +178,42 @@ FILE *fp = fopen(nome_arq, "w");
 
     fclose(fp); 
 }
+
+void exportar_dados_vendidos_csv(no_jogador_t *lista_jogador, FILE *fp)
+{
+    FILE *fp = fopen(nome_arq, "w");
+
+    if(lista_vazia_jogador(lista_jogador)) {
+        printf("Nenhum jogador cadastrado!\n");
+        msg_press_enter();
+        return;
+    }
+
+    if (!fp) {
+        printf("Erro ao abrir o arquivo %s!\n", nome_arq);
+        msg_press_enter();
+        return;
+    }
+    
+    fprintf(fp, "NOME;POSIÇÃO;IDADE;ALTURA;PESO;VALOR VENDA;VALOR COMPRA;SALÁRIO;DATA ADMISSAO;DATA VENDA;ATIVIDADE;RAZÃO INATIVIDADE\n");
+
+    while(lista_jogador) {
+        mostrar_dados_jogador_csv(lista_jogador, fp);
+        lista_jogador = lista_jogador->proximo;
+    }    
+
+    fclose(fp);
+
+}
+
+void exportar_adversario_csv(no_partida_t *lista_partida, FILE *fp)
+{
+
+
+}
+
+void exportar_info_time(no_partida_t *lista_partida, no_jogador_t *lista_jogador, FILE *fp)
+{
+
+
+}
