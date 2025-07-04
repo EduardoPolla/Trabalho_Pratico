@@ -6,12 +6,12 @@
 // Comparador de Datas para Escalação Partida
 int comparar_datas(data_t d_jogador, data_t d_partida)
 {
-    if(d_jogador.ano > d_partida.ano) return 1; 
     if(d_jogador.ano < d_partida.ano) return -1;
-    if(d_jogador.mes > d_partida.mes) return 1;
+    if(d_jogador.ano > d_partida.ano) return 1; 
     if(d_jogador.mes < d_partida.mes) return -1;
-    if(d_jogador.dia > d_partida.dia) return 1;
+    if(d_jogador.mes > d_partida.mes) return 1;
     if(d_jogador.dia < d_partida.dia) return -1;
+    if(d_jogador.dia > d_partida.dia) return 1;
 
     return 0;
 }
@@ -28,7 +28,7 @@ bool tem_data_venda(no_jogador_t *lista_jogador) {
 bool jogador_ativo_data(data_t data_partida, no_jogador_t *lista_jogador)
 {
     //Verifica se o jogador foi contratado antes da data da partida
-    if(comparar_datas(data_partida, lista_jogador->dados.admissao) > 0) {
+    if(comparar_datas(lista_jogador->dados.admissao, data_partida) > 0) {
         return false;
     }
 
@@ -210,7 +210,7 @@ no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
     getchar();
 
     // Escalação
-    for(lista_jogador; aux != NULL; aux = aux->proximo) {
+    for(aux = lista_jogador; aux != NULL; aux = aux->proximo) {
         if(jogador_ativo_data(nova->dados.data_partida, aux)) {
             jogadores_elegiveis[qtd_elegiveis] = aux;
             qtd_elegiveis++;
@@ -225,12 +225,12 @@ no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
     }
     
     else {
-        printf("Jogadores disponíveis para a data %i/%i/%i: ", nova->dados.data_partida.dia, nova->dados.data_partida.mes, nova->dados.data_partida.ano);
+        printf("Jogadores disponíveis para a data %i/%i/%i: \n", nova->dados.data_partida.dia, nova->dados.data_partida.mes, nova->dados.data_partida.ano);
         for(int i = 0; i < qtd_elegiveis; i++) {
             printf("%i - %s\n", i + 1, jogadores_elegiveis[i]->dados.nome_jogador);
         }
 
-        for(int i = 0; i < qtd_elegiveis; i++) {
+        for(int i = 0; i < 11; i++) {
             printf("Digite o número do jogador desejado para a posição %i: ", i + 1);
             scanf("%i", &numero_jogador);
             getchar();

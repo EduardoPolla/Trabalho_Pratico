@@ -67,11 +67,10 @@ void mostrar_dados_partida(no_partida_t *lista_partida)
     printf("Local da partida...............: %s\n", lista_partida->dados.local_partida);
     printf("Resultado da partida...........: %s\n", lista_partida->dados.resultado_partida);
     printf("Data da partida................: %i/%i/%i\n", lista_partida->dados.data_partida.dia, lista_partida->dados.data_partida.mes, lista_partida->dados.data_partida.ano);
-    printf("Escalação......................: ");
-    for(int i = 0; i < 10; i++) {
-        printf("Jogador %i - %s, ", i, lista_partida->dados.escalacao[i]);
+    printf("Escalação......................: \n");
+    for(int i = 0; i < 11; i++) {
+        printf("Jogador %i - %s\n", i + 1, lista_partida->dados.escalacao[i]);
     }
-    printf("Jogador %i - %s\n", ++i, lista_partida->dados.escalacao[i]);
     printf("Quantidade de substituições....: %i\n", lista_partida->dados.qtd_substituicoes);
     printf("=======================================================================\n");
 }
