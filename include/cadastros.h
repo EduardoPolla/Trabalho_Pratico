@@ -8,6 +8,7 @@
 no_jogador_t *novo_registro_jogador();
 void insere_novo_registro_jogador(no_jogador_t *novo_jogador, no_jogador_t **lista_jogador);
 void inativar_jogador(no_jogador_t **lista_jogador, string nome);
+void reativar_jogador(no_jogador_t **lista_jogador, string nome);
 
 // Partida
 no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador);

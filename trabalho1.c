@@ -54,15 +54,25 @@ int main()
                                     }
                                     break;
                                     
-                                case 3: printf("Digite o nome do jogador: ");
-                                        fgets(nome_jogador, TAMANHO, stdin);
-                                        retirar_enter(nome_jogador);
-                                        formatar_maiusculas(nome_jogador);
-                                        inativar_jogador(&lista_jogador, nome_jogador);
-                                        break;
-        
+                            case 3: printf("\nDigite o nome do jogador: ");
+                                    fgets(nome_jogador, TAMANHO, stdin);
+                                    retirar_enter(nome_jogador);
+                                    formatar_maiusculas(nome_jogador);
+                                    inativar_jogador(&lista_jogador, nome_jogador);
+                                    break;
+                            
+                            case 4: printf("\nDigite o nome do jogador: ");
+                                    fgets(nome_jogador, TAMANHO, stdin);
+                                    retirar_enter(nome_jogador);
+                                    formatar_maiusculas(nome_jogador);
+                                    reativar_jogador(&lista_jogador, nome_jogador);
+                                    break;
 
-                            default: msg_usuario("Opção inválida! Tente novamente!");
+                            case 0: limpar_tela();
+                                    break;
+        
+                            default: msg_usuario("\nOpção inválida! Tente novamente!");
+                                     msg_press_enter();
                         }
                     } while(sub_opcao != ENCERRAR);
                     break;
@@ -87,7 +97,7 @@ int main()
 													msg_press_enter();
 													break;
 
-											case 4: printf("Digite o nome do time adversário: ");
+											case 4: printf("\nDigite o nome do time adversário: ");
 													fgets(nome_adv, TAMANHO, stdin);
 													retirar_enter(nome_adv);
 													formatar_maiusculas(nome_adv);
@@ -104,9 +114,10 @@ int main()
 													break;
 
 											case 0: limpar_tela();
-											break;
+											        break;
 
-											default: msg_usuario("Opção inválida! Tente novamente!");
+											default: msg_usuario("\nOpção inválida! Tente novamente!");
+                                                     msg_press_enter();
 										}
 									} while(sub_opcao != ENCERRAR);
 									break;
@@ -116,37 +127,43 @@ int main()
 
 										switch(sub_opcao) {
 											case 1: exportar_dados_jogador_csv(lista_jogador, "jogadores.csv");
+                                                    abrir_arquivo_csv("jogadores.csv");
 													break;
 
 											case 2: exportar_dados_vendidos_csv(lista_jogador, "jogadores_vendidos.csv");
+                                                    abrir_arquivo_csv("jogadores_vendidos.csv");
 													break;
 
 											case 3: exportar_dados_partida_csv(lista_partida, "partidas.csv");
-													msg_press_enter();
+													abrir_arquivo_csv("partidas.csv");
 													break;
 
-											case 4: printf("Digite o nome do time adversário: ");
+											case 4: printf("\nDigite o nome do time adversário: ");
 													fgets(nome_adv, TAMANHO, stdin);
 													retirar_enter(nome_adv);
 													formatar_maiusculas(nome_adv);
 													exportar_adversario_csv(lista_partida, nome_adv, "partidas_adversario.csv");
+                                                    abrir_arquivo_csv("partidas_adversario.csv");
 													break;
 
 											case 5: exportar_info_time(lista_partida, lista_jogador, "info_time.csv");
-													msg_press_enter();
+                                                    abrir_arquivo_csv("info_time.csv");
 													break;
 
 											case 0: limpar_tela();
-											break;
+											        break;
 
-											default: msg_usuario("Opção inválida! Tente novamente!");
+											default: msg_usuario("\nOpção inválida! Tente novamente!");
+                                                     msg_press_enter();
 										}
 									} while(sub_opcao != ENCERRAR);
 									break;
+                            
+                            case 0: limpar_tela();
+                                    break;
 
-							case 3:
-									break;
-							default: msg_usuario("Opção inválida! Tente novamente!");
+							default: msg_usuario("\nOpção inválida! Tente novamente!");
+                                     msg_press_enter();
                         }
                 	} while(opcao_saida != ENCERRAR);
                     break;
@@ -156,7 +173,7 @@ int main()
 
                         switch(sub_opcao) {
 
-                            case 1: printf("Nome para efetuar a busca: ");
+                            case 1: printf("\nNome para efetuar a busca: ");
                                     fgets(nome_jogador, TAMANHO, stdin);
                                     retirar_enter(nome_jogador);
                                     formatar_maiusculas(nome_jogador);
@@ -164,7 +181,7 @@ int main()
                                     msg_press_enter();
                                     break;
 
-                            case 2: printf("Posição para efetuar a busca: ");
+                            case 2: printf("\nPosição para efetuar a busca: ");
                                     fgets(posicao, TAMANHO, stdin);
                                     retirar_enter(posicao);
                                     formatar_maiusculas(posicao);
@@ -172,7 +189,7 @@ int main()
                                     msg_press_enter();
                                     break;
 
-                            case 3: printf("Digite a idade mínima: ");
+                            case 3: printf("\nDigite a idade mínima: ");
                                     scanf("%i", &de_idade);
                                     getchar();
                                     printf("Digite a idade máxima: ");
@@ -182,7 +199,7 @@ int main()
                                     msg_press_enter();
                                     break;
 
-                            case 4: printf("Digite o salário mínimo: ");
+                            case 4: printf("\nDigite o salário mínimo: ");
                                     scanf("%f", &de_sal);
                                     getchar();
                                     printf("Digite o salário máximo: ");
@@ -199,7 +216,8 @@ int main()
                             case 0: limpar_tela();
                             break;
 
-                            default: msg_usuario("Opção inválida! Tente novamente!");
+                            default: msg_usuario("\nOpção inválida! Tente novamente!");
+                                     msg_press_enter();
                         }
                     } while(sub_opcao != ENCERRAR);
                     break;
@@ -207,7 +225,8 @@ int main()
             case 0: limpar_tela();
                     break;
 
-            default: msg_usuario("Opção inválida! Tente novamente!");
+            default: msg_usuario("\nOpção inválida! Tente novamente!");
+                     msg_press_enter();
         }
 
     } while(opcao != ENCERRAR);

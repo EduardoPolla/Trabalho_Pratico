@@ -9,12 +9,12 @@ void mostrar_dados_jogador(no_jogador_t *lista_jogador)
     printf("\n=======================================================================\n");
     printf("Nome do jogador................: %s\n", lista_jogador->dados.nome_jogador);
     printf("Posições do jogador............: %s\n", lista_jogador->dados.posicao);
-    printf("Idade do jogador...............: %i\n", lista_jogador->dados.idade);
-    printf("Altura do jogador..............: %.2f\n", lista_jogador->dados.altura);
-    printf("Peso do jogador................: %.2f\n", lista_jogador->dados.peso);
-    printf("Valor de passe do jogador......: %.2f\n", lista_jogador->dados.valor_passe);
-    printf("Valor de aquisição do jogador..: %.2f\n", lista_jogador->dados.valor_aquisicao);
-    printf("Salário do jogador.............: %.2f\n", lista_jogador->dados.salario);
+    printf("Idade do jogador...............: %i anos\n", lista_jogador->dados.idade);
+    printf("Altura do jogador..............: %.2fm\n", lista_jogador->dados.altura);
+    printf("Peso do jogador................: %.2fKg\n", lista_jogador->dados.peso);
+    printf("Valor de passe do jogador......: R$%.2f\n", lista_jogador->dados.valor_passe);
+    printf("Valor de aquisição do jogador..: R$%.2f\n", lista_jogador->dados.valor_aquisicao);
+    printf("Salário do jogador.............: R$%.2f\n", lista_jogador->dados.salario);
     printf("Data de admissão do jogador....: %i/%i/%i\n", lista_jogador->dados.admissao.dia, lista_jogador->dados.admissao.mes, lista_jogador->dados.admissao.ano);
     if(lista_jogador->dados.venda.mes != 0) {
         printf("Data de venda do jogador.......: %i/%i/%i\n", lista_jogador->dados.venda.dia, lista_jogador->dados.venda.mes, lista_jogador->dados.venda.ano);
@@ -29,7 +29,8 @@ void mostrar_dados_jogador(no_jogador_t *lista_jogador)
 void relatorio_jogadores(no_jogador_t *lista_jogador)
 {
     if(lista_vazia_jogador(lista_jogador)) {
-        printf("Nenhum jogador cadastrado!\n");
+        printf("\nNenhum jogador cadastrado!\n");
+        msg_press_enter();
         return;
     }
         
@@ -78,7 +79,8 @@ void mostrar_dados_partida(no_partida_t *lista_partida)
 void relatorio_partidas(no_partida_t *lista_partida)
 {
     if(lista_vazia_partida(lista_partida)) {
-        printf("Nenhuma partida cadastrada!\n"); 
+        printf("\nNenhuma partida cadastrada!\n"); 
+        msg_press_enter();
         return;
     }
 
@@ -91,7 +93,8 @@ void relatorio_partidas(no_partida_t *lista_partida)
 void relatorio_partidas_adversario(no_partida_t *lista_partida, string nome)
 {
     if(lista_vazia_partida(lista_partida)) {
-        printf("Não há partidas cadastradas!\n");
+        printf("\nNão há partidas cadastradas!\n");
+        msg_press_enter();
         return;
     }
 
@@ -110,7 +113,8 @@ void valor_time(no_jogador_t *lista_jogador)
     float soma = 0;
 
     if(lista_vazia_jogador(lista_jogador)) {
-        printf("Nenhum jogador cadastrado!\n");
+        printf("\nNenhum jogador cadastrado!\n");
+        msg_press_enter();
         return;
     }
 
@@ -121,7 +125,7 @@ void valor_time(no_jogador_t *lista_jogador)
         lista_jogador = lista_jogador->proximo;
     }
 
-    printf("Valor do time é %.2f!\n", soma);
+    printf("\nValor do time é R$%.2f!\n", soma);
 }
 
 void indice_aproveitamento(no_partida_t *lista_partida)
@@ -130,7 +134,8 @@ void indice_aproveitamento(no_partida_t *lista_partida)
     int nmr_partidas = 0;
 
     if(lista_vazia_partida(lista_partida)) {
-        printf("Nenhuma partida cadastrada!\n");
+        printf("\nNenhuma partida cadastrada!\n");
+        msg_press_enter();
         return;
     }
 
@@ -150,7 +155,7 @@ void indice_aproveitamento(no_partida_t *lista_partida)
         lista_partida = lista_partida->proxima;
     }
 
-    printf("N° de VITÓRIAS: %i\n", vitoria);
+    printf("\nN° de VITÓRIAS: %i\n", vitoria);
     printf("N° de EMPATES: %i\n", empate);
     printf("N° de DERROTAS: %i\n", derrota);
     printf("Índice de aproveitamento do time é %.2f por cento!\n", ((float)vitoria / nmr_partidas) * 100);

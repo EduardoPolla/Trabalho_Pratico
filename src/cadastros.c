@@ -164,6 +164,22 @@ void inativar_jogador(no_jogador_t **lista_jogador, string nome)
     }
 }
 
+void reativar_jogador(no_jogador_t **lista_jogador, string nome)
+{
+    if(lista_vazia_jogador(*lista_jogador)) {
+        printf("Nehum jogador cadastrado!\n");
+        return;
+    }
+
+    while(*lista_jogador) {
+        if(strcmp((*lista_jogador)->dados.nome_jogador, nome) == 0 && strcmp((*lista_jogador)->dados.razao_inatividade, "VENDIDO") != 0) {
+            strcpy((*lista_jogador)->dados.atividade, "ATIVO");
+            strcpy((*lista_jogador)->dados.razao_inatividade, ""); 
+        }
+        lista_jogador = &((*lista_jogador)->proximo);
+    }
+}
+
 // Partida
 
 bool lista_vazia_partida(no_partida_t *lista_partida)

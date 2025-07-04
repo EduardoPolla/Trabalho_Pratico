@@ -11,6 +11,7 @@ void salvar_partidas_bin(no_partida_t *lista_partida, string nome_arq);
 void carregar_partidas_bin(no_partida_t **lista_partida, string nome_arq);
 
 // Arquivos .csv
+void abrir_arquivo_csv(string nome_arq);
 void mostrar_dados_jogador_csv(no_jogador_t *lista_jogador, FILE *fp);
 void mostrar_dados_lista_csv(no_partida_t *lista_partida, FILE *fp);
 void exportar_dados_jogador_csv(no_jogador_t *lista_jogador, string nome_arq);

@@ -6,12 +6,21 @@
 #include <string.h>
 
 // Arquivos .bin
+void abrir_arquivo_csv(string nome_arq)
+{
+    char comando[TAMANHO];
+
+    sprintf(comando, "xdg-open %s", nome_arq);
+    system(comando); 
+}
+
 void salvar_jogadores_bin(no_jogador_t *lista_jogador, string nome_arq)
 {
     FILE *fp = fopen(nome_arq, "wb");
 
     if(!fp) {
-        printf("Erro ao criar arquvio %s!\n", nome_arq);
+        printf("Erro ao abrir o arquivo %s!\n", nome_arq);
+        msg_press_enter();
         return;
     }
 
@@ -28,7 +37,8 @@ void carregar_jogadores_bin(no_jogador_t **lista_jogador, string nome_arq)
     FILE *fp = fopen(nome_arq, "rb");
 
     if(!fp) {
-        printf("Erro ao abrir arquivo %s\n", nome_arq);
+        printf("Erro ao abrir o arquivo %s!\n", nome_arq);
+        msg_press_enter();
         return;
     }
 
@@ -52,7 +62,8 @@ void salvar_partidas_bin(no_partida_t *lista_partida, string nome_arq)
     FILE *fp = fopen(nome_arq, "wb");
 
     if(!fp) {
-        printf("Erro ao criar arquvio %s!\n", nome_arq);
+        printf("Erro ao abrir o arquivo %s!\n", nome_arq);
+        msg_press_enter();
         return;
     }
 
@@ -69,7 +80,8 @@ void carregar_partidas_bin(no_partida_t **lista_partida, string nome_arq)
     FILE *fp = fopen(nome_arq, "rb");
 
     if(!fp) {
-        printf("Erro ao abrir arquivo %s\n", nome_arq);
+        printf("Erro ao abrir o arquivo %s!\n", nome_arq);
+        msg_press_enter();
         return;
     }
 
@@ -96,9 +108,9 @@ void mostrar_dados_jogador_csv(no_jogador_t *lista_jogador, FILE *fp)
     fprintf(fp, "%i;", lista_jogador->dados.idade);
     fprintf(fp, "%.2f;", lista_jogador->dados.altura);
     fprintf(fp, "%.2f;", lista_jogador->dados.peso);
-    fprintf(fp, "%.2f;", lista_jogador->dados.valor_passe);
-    fprintf(fp, "%.2f;", lista_jogador->dados.valor_aquisicao);
-    fprintf(fp, "%.2f;", lista_jogador->dados.salario);
+    fprintf(fp, "R$%.2f;", lista_jogador->dados.valor_passe);
+    fprintf(fp, "R$%.2f;", lista_jogador->dados.valor_aquisicao);
+    fprintf(fp, "R$%.2f;", lista_jogador->dados.salario);
     fprintf(fp, "%d/%d/%d;", lista_jogador->dados.admissao.dia, lista_jogador->dados.admissao.mes, lista_jogador->dados.admissao.ano);
     fprintf(fp, "%d/%d/%d;", lista_jogador->dados.venda.dia, lista_jogador->dados.venda.mes, lista_jogador->dados.venda.ano);
     fprintf(fp, "%s;", lista_jogador->dados.atividade);

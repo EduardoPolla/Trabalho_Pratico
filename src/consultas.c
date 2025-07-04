@@ -86,7 +86,7 @@ void localizar_jogador_salario(no_jogador_t *lista_jogador, float de, float ate)
     }
 
     while(lista_jogador) {
-        if(lista_jogador->dados.idade >= de && lista_jogador->dados.idade <= ate) {
+        if(lista_jogador->dados.salario >= de && lista_jogador->dados.salario <= ate) {
             mostrar_dados_jogador(lista_jogador);
         }
         lista_jogador = lista_jogador->proximo;
