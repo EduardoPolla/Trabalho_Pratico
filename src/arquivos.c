@@ -92,7 +92,7 @@ void carregar_partidas_bin(no_partida_t **lista_partida, string nome_arq)
 void mostrar_dados_jogador_csv(no_jogador_t *lista_jogador, FILE *fp) 
 {
     fprintf(fp, "%s;", lista_jogador->dados.nome_jogador);
-    fprintf(fp, "%s;", lista_jogador->dados.posicao);
+    fprintf(fp, "\"%s\";", lista_jogador->dados.posicao);
     fprintf(fp, "%i;", lista_jogador->dados.idade);
     fprintf(fp, "%.2f;", lista_jogador->dados.altura);
     fprintf(fp, "%.2f;", lista_jogador->dados.peso);
