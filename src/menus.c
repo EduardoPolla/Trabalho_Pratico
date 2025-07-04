@@ -41,6 +41,25 @@ int menu_cadastros()
     return opcao;
 }
 
+int tipo_saida() 
+{
+    int opcao;
+
+    limpar_tela();
+
+    printf("| MENU TIPO DE SAÍDA |\n");
+    printf("----------------------\n");
+    printf("1. Saída no terminal\n");
+    printf("2. Saída em formato .csv\n");
+    printf("3. Saida em formato HTML\n");
+    printf("0. Voltar ao MENU PRINCIPAL\n");
+    printf("Digite a opção desejada: ");
+    scanf("%i", &opcao);
+    getchar();
+
+    return opcao;
+}
+
 int menu_relatorios()
 {
     int opcao;
@@ -55,7 +74,7 @@ int menu_relatorios()
     printf("4. Relatório de partidas contra time adversário\n");
     printf("5. Valor do time\n");
     printf("6. Indíce de aproveitamento do time\n");
-    printf("0. Voltar ao MENU PRINCIPAL\n");
+    printf("0. Voltar ao MENU TIPO DE SAÍDa\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);
     getchar();

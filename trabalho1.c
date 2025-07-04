@@ -12,7 +12,7 @@
 int main()
 {
     //Menu
-    int opcao, sub_opcao;
+    int opcao, sub_opcao, opcao_saida;
 
     // Jogadores 
     no_jogador_t *lista_jogador = NULL;
@@ -68,44 +68,94 @@ int main()
                     break;
 
             case 2: do {
-                        sub_opcao = menu_relatorios();
+                        opcao_saida = tipo_saida();
 
-                        switch(sub_opcao) {
+                        switch(opcao_saida) {
+							case 1: do {
+										sub_opcao = menu_relatorios();
 
-                            case 1: relatorio_jogadores(lista_jogador);
-                                    msg_press_enter();
-                                    break;
+										switch(sub_opcao) {
+											case 1: relatorio_jogadores(lista_jogador);
+													msg_press_enter();
+													break;
 
-                            case 2: relatorio_jogadores_vendidos(lista_jogador);
-                                    msg_press_enter();
-                                    break;
+											case 2: relatorio_jogadores_vendidos(lista_jogador);
+													msg_press_enter();
+													break;
 
-                            case 3: relatorio_partidas(lista_partida);
-                                    msg_press_enter();
-                                    break;
+											case 3: relatorio_partidas(lista_partida);
+													msg_press_enter();
+													break;
 
-                            case 4: printf("Digite o nome do time adversário: ");
-                                    fgets(nome_adv, TAMANHO, stdin);
-                                    retirar_enter(nome_adv);
-                                    formatar_maiusculas(nome_adv);
-                                    relatorio_partidas_adversario(lista_partida, nome_adv);
-                                    msg_press_enter();
-                                    break;
+											case 4: printf("Digite o nome do time adversário: ");
+													fgets(nome_adv, TAMANHO, stdin);
+													retirar_enter(nome_adv);
+													formatar_maiusculas(nome_adv);
+													relatorio_partidas_adversario(lista_partida, nome_adv);
+													msg_press_enter();
+													break;
 
-                            case 5: valor_time(lista_jogador);
-                                    msg_press_enter();
-                                    break;
+											case 5: valor_time(lista_jogador);
+													msg_press_enter();
+													break;
 
-                            case 6: indice_aproveitamento(lista_partida);
-                                    msg_press_enter();
-                                    break;
+											case 6: indice_aproveitamento(lista_partida);
+													msg_press_enter();
+													break;
 
-                            case 0: limpar_tela();
-                            break;
+											case 0: limpar_tela();
+											break;
 
-                            default: msg_usuario("Opção inválida! Tente novamente!");
+											default: msg_usuario("Opção inválida! Tente novamente!");
+										}
+									} while(sub_opcao != ENCERRAR);
+									break;
+
+							case 2: do {
+										sub_opcao = menu_relatorios();
+
+										switch(sub_opcao) {
+											case 1: exportar_dados_jogador_csv(lista_jogador, "jogadores.csv");
+													msg_press_enter();
+													break;
+
+											case 2: 
+													msg_press_enter();
+													break;
+
+											case 3: exportar_dados_partida_csv(lista_partida, "partidas.csv");
+													msg_press_enter();
+													break;
+
+											case 4: printf("Digite o nome do time adversário: ");
+													fgets(nome_adv, TAMANHO, stdin);
+													retirar_enter(nome_adv);
+													formatar_maiusculas(nome_adv);
+													relatorio_partidas_adversario(lista_partida, nome_adv);
+													msg_press_enter();
+													break;
+
+											case 5: valor_time(lista_jogador);
+													msg_press_enter();
+													break;
+
+											case 6: indice_aproveitamento(lista_partida);
+													msg_press_enter();
+													break;
+
+											case 0: limpar_tela();
+											break;
+
+											default: msg_usuario("Opção inválida! Tente novamente!");
+										}
+									} while(sub_opcao != ENCERRAR);
+									break;
+
+							case 3:
+									break;
+							default: msg_usuario("Opção inválida! Tente novamente!");
                         }
-                    } while(sub_opcao != ENCERRAR);
+                	} while(opcao_saida != ENCERRAR);
                     break;
 
             case 3: do {
