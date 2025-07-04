@@ -1,9 +1,0 @@
-3 - Arquivo .csv
-4 - Fazer HTML
-
-
-Apresentação:
-
-1 - Estudar funções de salvar e carregar arquivos binários
-2 - Estudar escalação em partidas
-3 - Estudar Makefile                 
