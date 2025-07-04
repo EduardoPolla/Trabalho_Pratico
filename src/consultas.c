@@ -15,6 +15,11 @@ void localizar_jogadores_nome(no_jogador_t *lista_jogador, string nome_jogador)
     }
 
     while(lista_jogador) {
+        if(strcmp(nome_jogador, lista_jogador->dados.nome_jogador) == 0) {
+            mostrar_dados_jogador(lista_jogador);
+            return;
+        }
+
         strcpy(nome_temp, lista_jogador->dados.nome_jogador);
 
         token = strtok(nome_temp, " ");

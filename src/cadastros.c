@@ -127,6 +127,43 @@ void insere_novo_registro_jogador(no_jogador_t *novo_jogador, no_jogador_t **lis
     *lista_jogador = novo_jogador;
 }   
 
+void inativar_jogador(no_jogador_t **lista_jogador, string nome)
+{
+    int opcao;
+
+    if(lista_vazia_jogador(*lista_jogador)) {
+        printf("Nehum jogador cadastrado!\n");
+        return;
+    }
+
+    while(*lista_jogador) {
+        if(strcmp((*lista_jogador)->dados.nome_jogador, nome) == 0) {
+            printf("Deseja vender(1) ou inativar o jogador por recuperação médica(2): ");
+            scanf("%i", &opcao);
+            getchar();
+
+            switch(opcao) {
+                case 1: printf("Data de venda: ");
+                        scanf("%i/%i/%i", &((*lista_jogador)->dados.venda.dia), &((*lista_jogador)->dados.venda.mes), &((*lista_jogador)->dados.venda.ano));
+                        getchar();
+                        strcpy((*lista_jogador)->dados.atividade, "INATIVO");
+                        strcpy((*lista_jogador)->dados.razao_inatividade, "VENDIDO");
+                        (*lista_jogador)->dados.salario = 0; 
+                        break;
+
+                case 2: strcpy((*lista_jogador)->dados.atividade, "INATIVO");
+                        strcpy((*lista_jogador)->dados.razao_inatividade, "RECUPERAÇÃO MÉDICA");
+                        break;
+
+                default: printf("Opção inválida!\n");
+                         break;
+            }
+        }
+
+        lista_jogador = &((*lista_jogador)->proximo);
+    }
+}
+
 // Partida
 
 bool lista_vazia_partida(no_partida_t *lista_partida)

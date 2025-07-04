@@ -1,6 +1,7 @@
+1 - Dar uma formatada no código
 2 - Arrumar escalação
 3 - arquivo .csv
-4 - Fazer arquivo para redefinir dados(partida e jogador)
+
 
 Apresentação:
 

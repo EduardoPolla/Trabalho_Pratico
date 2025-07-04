@@ -53,6 +53,14 @@ int main()
                                         msg_press_enter();
                                     }
                                     break;
+                                    
+                                case 3: printf("Digite o nome do jogador: ");
+                                        fgets(nome_jogador, TAMANHO, stdin);
+                                        retirar_enter(nome_jogador);
+                                        formatar_maiusculas(nome_jogador);
+                                        inativar_jogador(&lista_jogador, nome_jogador);
+                                        break;
+        
 
                             default: msg_usuario("Opção inválida! Tente novamente!");
                         }
