@@ -1,0 +1,9 @@
+----------------------------------------
+Índice de Aproveitamento e Valor do Time
+----------------------------------------
+
+Número de vitórias: 2
+Número de empates: 0
+Número de derrotas: 1
+Índice de aproveitamento: 66.67
+Valor do time: R$5148140.00

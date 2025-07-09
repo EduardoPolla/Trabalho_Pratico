@@ -32,8 +32,7 @@ void relatorio_jogadores(no_jogador_t *lista_jogador)
         printf("\nNenhum jogador cadastrado!\n");
         msg_press_enter();
         return;
-    }
-        
+    }     
 
     while(lista_jogador) {
         mostrar_dados_jogador(lista_jogador);
@@ -44,7 +43,8 @@ void relatorio_jogadores(no_jogador_t *lista_jogador)
 void relatorio_jogadores_vendidos(no_jogador_t *lista_jogador)
 {
     if(lista_vazia_jogador(lista_jogador)) {
-        printf("Nenhum jogador cadastrado!\n"); 
+        printf("\nNenhum jogador cadastrado!\n"); 
+        msg_press_enter();
         return;
     }
 

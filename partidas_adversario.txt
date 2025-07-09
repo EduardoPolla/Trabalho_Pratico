@@ -1,0 +1,22 @@
+------------------------------------------------
+Relatorio Completo de Partidas Contra Adversário
+------------------------------------------------
+
+Adversário: CHELSEA
+Local da partida: ARENA DE SANTOS
+Data da partida: 2/2/2030
+Resultado: VITORIA
+Escalação: 
+Jogador[1]: SERGIO RODRIGUES ALMEIDA
+Jogador[2]: JAMES SANTOS
+Jogador[3]: ROBSON ROBENSBERTH
+Jogador[4]: XEROX BARBOSA
+Jogador[5]: RICARDO CAMPOS
+Jogador[6]: MICHAEL JAKESON
+Jogador[7]: SALES DE SANTOS
+Jogador[8]: NEYRIO
+Jogador[9]: ELIO DE MATOS
+Jogador[10]: ANDRE MATOS
+Jogador[11]: RONALDO ANOMALO
+Quantidade de substituições: 0
+

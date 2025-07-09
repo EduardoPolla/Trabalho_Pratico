@@ -52,6 +52,8 @@ int tipo_saida()
     printf("----------------------\n");
     printf("1. Saída no terminal\n");
     printf("2. Saída em formato .csv\n");
+    printf("3. Saída em formato .txt\n");
+    printf("4. Saída em formato .html\n");
     printf("0. Voltar ao MENU PRINCIPAL\n\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);
@@ -95,6 +97,45 @@ int menu_csv()
     printf("3. Relatório de partidas\n");
     printf("4. Relatório de partidas contra time adversário\n");
     printf("5. Valor do time e indíce de aproveitamento\n");
+    printf("0. Voltar ao MENU TIPO DE SAÍDA\n\n");
+    printf("Digite a opção desejada: ");
+    scanf("%i", &opcao);
+    getchar();
+
+    return opcao;
+}
+
+int menu_txt()
+{
+    int opcao;
+
+    limpar_tela();
+
+    printf("| MENU RELATÓRIOS .txt|\n");
+    printf("-----------------------\n");
+    printf("1. Relatório de jogadores\n");
+    printf("2. Relatório de jogadores vendidos\n");
+    printf("3. Relatório de partidas\n");
+    printf("4. Relatório de partidas contra time adversário\n");
+    printf("5. Valor do time e indíce de aproveitamento\n");
+    printf("0. Voltar ao MENU TIPO DE SAÍDA\n\n");
+    printf("Digite a opção desejada: ");
+    scanf("%i", &opcao);
+    getchar();
+
+    return opcao;
+}
+
+int menu_html()
+{
+    int opcao;
+
+    limpar_tela();
+
+    printf("| MENU RELATÓRIOS .html|\n");
+    printf("-----------------------\n");
+    printf("1. Relatório de jogadores\n");
+    printf("2. Relatório de partidas\n");
     printf("0. Voltar ao MENU TIPO DE SAÍDA\n\n");
     printf("Digite a opção desejada: ");
     scanf("%i", &opcao);

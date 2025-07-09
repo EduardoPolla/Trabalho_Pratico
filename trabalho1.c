@@ -35,6 +35,12 @@ int main()
     // Carrega Partidas de Arquivo .bin
     carregar_partidas_bin(&lista_partida, "partidas.bin");
 
+	// Apagar Lista Jogadores
+	no_jogador_t *aux_jog;
+
+	// Apagar Lista Partidas
+	no_partida_t *aux_part;
+
     do {
         opcao = menu_principal();
 
@@ -117,7 +123,7 @@ int main()
 											        break;
 
 											default: msg_usuario("\nOpção inválida! Tente novamente!");
-                                                     msg_press_enter();
+                                                    msg_press_enter();
 										}
 									} while(sub_opcao != ENCERRAR);
 									break;
@@ -146,7 +152,7 @@ int main()
                                                     abrir_arquivo_csv("partidas_adversario.csv");
 													break;
 
-											case 5: exportar_info_time(lista_partida, lista_jogador, "info_time.csv");
+											case 5: exportar_info_time_csv(lista_partida, lista_jogador, "info_time.csv");
                                                     abrir_arquivo_csv("info_time.csv");
 													break;
 
@@ -158,6 +164,65 @@ int main()
 										}
 									} while(sub_opcao != ENCERRAR);
 									break;
+
+							case 3: do {
+										sub_opcao = menu_txt();
+
+										switch(sub_opcao) {
+											case 1: exportar_dados_jogador_txt(lista_jogador, "jogadores.txt");
+                                                    abrir_arquivo_csv("jogadores.txt");
+													break;
+
+											case 2: exportar_dados_vendidos_txt(lista_jogador, "jogadores_vendidos.txt");
+                                                    abrir_arquivo_csv("jogadores_vendidos.txt");
+													break;
+
+											case 3: exportar_dados_partida_txt(lista_partida, "partidas.txt");
+													abrir_arquivo_csv("partidas.txt");
+													break;
+
+											case 4: printf("\nDigite o nome do time adversário: ");
+													fgets(nome_adv, TAMANHO, stdin);
+													retirar_enter(nome_adv);
+													formatar_maiusculas(nome_adv);
+													exportar_adversario_txt(lista_partida, nome_adv, "partidas_adversario.txt");
+                                                    abrir_arquivo_csv("partidas_adversario.txt");
+													break;
+
+											case 5: exportar_info_time_txt(lista_partida, lista_jogador, "info_time.txt");
+                                                    abrir_arquivo_csv("info_time.txt");
+													break;
+
+											case 0: limpar_tela();
+											        break;
+
+											default: msg_usuario("\nOpção inválida! Tente novamente!");
+                                                     msg_press_enter();
+										}
+									} while(sub_opcao != ENCERRAR);
+									break;
+
+							case 4: do {
+										sub_opcao = menu_html();
+
+										switch(sub_opcao) {
+											case 1: exportar_dados_jogador_html(lista_jogador, "jogadores.html");
+                                                    abrir_arquivo_csv("jogadores.html");
+													break;
+
+											case 2: exportar_dados_partida_html(lista_partida, "partidas.html");
+                                                    abrir_arquivo_csv("partidas.html");
+													break;
+
+											case 0: limpar_tela();
+											        break;
+
+											default: msg_usuario("\nOpção inválida! Tente novamente!");
+                                                     msg_press_enter();
+										}
+									} while(sub_opcao != ENCERRAR);
+									break;
+
                             
                             case 0: limpar_tela();
                                     break;
@@ -240,6 +305,18 @@ int main()
     if(!lista_vazia_partida(lista_partida)) {
         salvar_partidas_bin(lista_partida, "partidas.bin");
     }
+
+	while(lista_jogador) {
+		aux_jog = lista_jogador;
+		lista_jogador = lista_jogador->proximo;
+		free(aux_jog);
+	}
+
+	while(lista_partida) {
+		aux_part = lista_partida;
+		lista_partida = lista_partida->proxima;
+		free(aux_part);
+	}
 
     return 0;
 }

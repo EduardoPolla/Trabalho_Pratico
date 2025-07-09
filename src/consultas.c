@@ -10,7 +10,8 @@ void localizar_jogadores_nome(no_jogador_t *lista_jogador, string nome_jogador)
     char *token;
 
     if(lista_vazia_jogador(lista_jogador)) {
-        printf("Nenhum jogador cadastrado!\n");
+        printf("\nNenhum jogador cadastrado!\n");
+        msg_press_enter();
         return;
     }
 
@@ -42,7 +43,8 @@ void localizar_jogadores_posicao(no_jogador_t *lista_jogador, string posicao)
     char *token;
 
     if(lista_vazia_jogador(lista_jogador)) {
-        printf("Nenhum jogador cadastrado!\n");
+        printf("\nNenhum jogador cadastrado!\n");
+        msg_press_enter();
         return;
     }
 
@@ -66,7 +68,8 @@ void localizar_jogadores_posicao(no_jogador_t *lista_jogador, string posicao)
 void localizar_jogador_idade(no_jogador_t *lista_jogador, int de, int ate)
 {
     if(lista_vazia_jogador(lista_jogador)) {
-        printf("Nenhum jogador cadastrado!\n");
+        printf("\nNenhum jogador cadastrado!\n");
+        msg_press_enter();
         return;
     }
 
@@ -81,7 +84,8 @@ void localizar_jogador_idade(no_jogador_t *lista_jogador, int de, int ate)
 void localizar_jogador_salario(no_jogador_t *lista_jogador, float de, float ate)
 {
     if(lista_vazia_jogador(lista_jogador)) {
-        printf("Nenhum jogador cadastrado!\n");
+        printf("\nNenhum jogador cadastrado!\n");
+        msg_press_enter();
         return;
     }
 
@@ -99,7 +103,8 @@ void localizar_jogador_maior_salario(no_jogador_t *lista_jogador)
     no_jogador_t *aux;
 
     if(lista_vazia_jogador(lista_jogador)) {
-        printf("Nenhum jogador cadastrado!\n");
+        printf("\nNenhum jogador cadastrado!\n");
+        msg_press_enter();
         return;
     }
 

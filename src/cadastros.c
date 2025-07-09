@@ -56,7 +56,7 @@ no_jogador_t *novo_registro_jogador()
     if(!novo) return NULL;
 
     // Nome
-    printf("Nome do jogador................: ");
+    printf("\nNome do jogador................: ");
     fgets(novo->dados.nome_jogador, TAMANHO, stdin);
     retirar_enter(novo->dados.nome_jogador);
     formatar_maiusculas(novo->dados.nome_jogador);
@@ -132,13 +132,14 @@ void inativar_jogador(no_jogador_t **lista_jogador, string nome)
     int opcao;
 
     if(lista_vazia_jogador(*lista_jogador)) {
-        printf("Nehum jogador cadastrado!\n");
+        printf("\nNehum jogador cadastrado!\n");
+        msg_press_enter();
         return;
     }
 
     while(*lista_jogador) {
         if(strcmp((*lista_jogador)->dados.nome_jogador, nome) == 0) {
-            printf("Deseja vender(1) ou inativar o jogador por recuperação médica(2): ");
+            printf("\nDeseja vender(1) ou inativar o jogador por recuperação médica(2): ");
             scanf("%i", &opcao);
             getchar();
 
@@ -155,7 +156,8 @@ void inativar_jogador(no_jogador_t **lista_jogador, string nome)
                         strcpy((*lista_jogador)->dados.razao_inatividade, "RECUPERAÇÃO MÉDICA");
                         break;
 
-                default: printf("Opção inválida!\n");
+                default: printf("\nOpção inválida!\n");
+                         msg_press_enter();
                          break;
             }
         }
@@ -167,7 +169,8 @@ void inativar_jogador(no_jogador_t **lista_jogador, string nome)
 void reativar_jogador(no_jogador_t **lista_jogador, string nome)
 {
     if(lista_vazia_jogador(*lista_jogador)) {
-        printf("Nehum jogador cadastrado!\n");
+        printf("\nNehum jogador cadastrado!\n");
+        msg_press_enter();
         return;
     }
 
@@ -192,7 +195,8 @@ bool lista_vazia_partida(no_partida_t *lista_partida)
 no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
 {
     if(!lista_jogador) {
-        printf("Não há jogadores para escalação no banco de dados!\n");
+        printf("\nNão há jogadores para escalação no banco de dados!\n");
+        msg_press_enter();
         return NULL;
     }
 
@@ -203,7 +207,7 @@ no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
     if(!nova) return NULL;
 
     // Nome
-    printf("Nome do time adversário........: ");
+    printf("\nNome do time adversário........: ");
     fgets(nova->dados.nome_adversario, TAMANHO, stdin);
     retirar_enter(nova->dados.nome_adversario);
     formatar_maiusculas(nova->dados.nome_adversario);
@@ -234,17 +238,19 @@ no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
     }
 
     if(qtd_elegiveis < 11) {
-        printf("Quantidade de jogadores insuficientes para a data %i/%i/%i\n", nova->dados.data_partida.dia, nova->dados.data_partida.mes, nova->dados.data_partida.ano);
-        msg_press_enter();
+        printf("\nQuantidade de jogadores insuficientes para a data %i/%i/%i\n", nova->dados.data_partida.dia, nova->dados.data_partida.mes, nova->dados.data_partida.ano);
         free(nova);
+        msg_press_enter();
         return NULL;
     }
     
     else {
-        printf("Jogadores disponíveis para a data %i/%i/%i: \n", nova->dados.data_partida.dia, nova->dados.data_partida.mes, nova->dados.data_partida.ano);
+        printf("Jogadores disponíveis para a data %i/%i/%i: \n\n", nova->dados.data_partida.dia, nova->dados.data_partida.mes, nova->dados.data_partida.ano);
         for(int i = 0; i < qtd_elegiveis; i++) {
             printf("%i - %s\n", i + 1, jogadores_elegiveis[i]->dados.nome_jogador);
         }
+
+        printf("\n");
 
         for(int i = 0; i < 11; i++) {
             printf("Digite o número do jogador desejado para a posição %i: ", i + 1);
@@ -256,7 +262,7 @@ no_partida_t *novo_registro_partida(no_jogador_t *lista_jogador)
     }
 
     // Quantidade Substituições
-    printf("N° de substituições na partida.: ");
+    printf("\nN° de substituições na partida.: ");
     scanf("%i", &nova->dados.qtd_substituicoes);
     getchar();
 
@@ -269,6 +275,12 @@ void insere_novo_registro_partida(no_partida_t *nova_partida, no_partida_t **lis
 {
     if(lista_vazia_partida(*lista_partida)) {
         *lista_partida = nova_partida;
+        return;
+    }
+
+    if(lista_vazia_partida(nova_partida)) {
+        printf("\nErro ao inserir no banco de dados!\n");
+        msg_press_enter();
         return;
     }
 

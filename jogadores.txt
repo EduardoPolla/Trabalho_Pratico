@@ -1,0 +1,148 @@
+-------------------------------
+Relatorio Completo de Jogadores
+-------------------------------
+
+Nome: EDUARDO POLLA]
+Posições: ATACANTE, GOLEIRO
+Idade: 18
+Altura: 1.77
+Peso: 70.00
+Valor de passe: R$300000.00
+Valor de venda: R$30000.00
+Salário: R$40000.00
+Data de admissão: 2/2/2020
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: RONALDO ANOMALO
+Posições: LATERAL DIREITA
+Idade: 32
+Altura: 1.80
+Peso: 100.00
+Valor de passe: R$432000.00
+Valor de venda: R$12000.00
+Salário: R$30000.00
+Data de admissão: 12/4/2012
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: ANDRE MATOS
+Posições: GOLEIRO
+Idade: 21
+Altura: 1.81
+Peso: 71.00
+Valor de passe: R$710000.00
+Valor de venda: R$21000.00
+Salário: R$45300.00
+Data de admissão: 11/0/0
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: ELIO DE MATOS
+Posições: LATERAL DIREITA, LATERAL ESQUERDA
+Idade: 34
+Altura: 1.72
+Peso: 87.00
+Valor de passe: R$310000.00
+Valor de venda: R$200000.00
+Salário: R$12000.00
+Data de admissão: 7/7/2007
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: NEYRIO
+Posições: MEIO DE CAMPO
+Idade: 24
+Altura: 1.89
+Peso: 90.00
+Valor de passe: R$1000000.00
+Valor de venda: R$1000.00
+Salário: R$90000.00
+Data de admissão: 17/8/2021
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: SALES DE SANTOS
+Posições: MEIO DE CAMPO, LATERAL ESQUERDA
+Idade: 33
+Altura: 1.69
+Peso: 76.00
+Valor de passe: R$200.00
+Valor de venda: R$17500.00
+Salário: R$20000.00
+Data de admissão: 14/9/2018
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: MICHAEL JAKESON
+Posições: GOLEIRO
+Idade: 31
+Altura: 1.87
+Peso: 112.00
+Valor de passe: R$843040.00
+Valor de venda: R$123040.00
+Salário: R$54000.00
+Data de admissão: 28/12/2015
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: RICARDO CAMPOS
+Posições: ATACANTE
+Idade: 17
+Altura: 1.87
+Peso: 76.00
+Valor de passe: R$310000.00
+Valor de venda: R$32000.00
+Salário: R$17500.00
+Data de admissão: 13/12/2024
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: XEROX BARBOSA
+Posições: LATERAL ESQUERDA
+Idade: 43
+Altura: 1.87
+Peso: 79.00
+Valor de passe: R$312900.00
+Valor de venda: R$240000.00
+Salário: R$18.00
+Data de admissão: 3/2013/0
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: ROBSON ROBENSBERTH
+Posições: MEIO DE CAMPO
+Idade: 23
+Altura: 1.68
+Peso: 87.00
+Valor de passe: R$500000.00
+Valor de venda: R$200000.00
+Salário: R$30000.00
+Data de admissão: 2/7/2020
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: JAMES SANTOS
+Posições: LATERAL ESQUERDA, ATACANTE
+Idade: 40
+Altura: 1.83
+Peso: 78.50
+Valor de passe: R$200000.00
+Valor de venda: R$2000.00
+Salário: R$32000.00
+Data de admissão: 6/7/2010
+Data de venda: 0/0/0
+Status: ATIVO
+
+Nome: SERGIO RODRIGUES ALMEIDA
+Posições: GOLEIRO, LATERAL DIREITA
+Idade: 34
+Altura: 1.67
+Peso: 69.00
+Valor de passe: R$230000.00
+Valor de venda: R$12000.00
+Salário: R$9000.00
+Data de admissão: 23/10/2020
+Data de venda: 0/0/0
+Status: ATIVO
+

@@ -1,0 +1,58 @@
+-------------------------------
+Relatorio Completo de Partidas
+-------------------------------
+
+Adversário: GREMIO
+Local da partida: ESTADIO DE SOLIMOES
+Data da partida: 14/6/2037
+Resultado: DERROTA
+Escalação: 
+Jogador[1]: EDUARDO POLLA]
+Jogador[2]: RICARDO CAMPOS
+Jogador[3]: JAMES SANTOS
+Jogador[4]: ROBSON ROBENSBERTH
+Jogador[5]: SERGIO RODRIGUES ALMEIDA
+Jogador[6]: ANDRE MATOS
+Jogador[7]: RONALDO ANOMALO
+Jogador[8]: SALES DE SANTOS
+Jogador[9]: NEYRIO
+Jogador[10]: ELIO DE MATOS
+Jogador[11]: MICHAEL JAKESON
+Quantidade de substituições: 0
+
+Adversário: CHELSEA
+Local da partida: ARENA DE SANTOS
+Data da partida: 2/2/2030
+Resultado: VITORIA
+Escalação: 
+Jogador[1]: SERGIO RODRIGUES ALMEIDA
+Jogador[2]: JAMES SANTOS
+Jogador[3]: ROBSON ROBENSBERTH
+Jogador[4]: XEROX BARBOSA
+Jogador[5]: RICARDO CAMPOS
+Jogador[6]: MICHAEL JAKESON
+Jogador[7]: SALES DE SANTOS
+Jogador[8]: NEYRIO
+Jogador[9]: ELIO DE MATOS
+Jogador[10]: ANDRE MATOS
+Jogador[11]: RONALDO ANOMALO
+Quantidade de substituições: 0
+
+Adversário: FLUMINENSE
+Local da partida: ESTADIO DO MARACANA
+Data da partida: 12/11/2035
+Resultado: VITORIA
+Escalação: 
+Jogador[1]: EDUARDO POLLA]
+Jogador[2]: RONALDO ANOMALO
+Jogador[3]: ANDRE MATOS
+Jogador[4]: ELIO DE MATOS
+Jogador[5]: NEYRIO
+Jogador[6]: SALES DE SANTOS
+Jogador[7]: MICHAEL JAKESON
+Jogador[8]: RICARDO CAMPOS
+Jogador[9]: XEROX BARBOSA
+Jogador[10]: ROBSON ROBENSBERTH
+Jogador[11]: JAMES SANTOS
+Quantidade de substituições: 1
+
